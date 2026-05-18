@@ -4,6 +4,7 @@ slug: "clinical-notes-deid"
 category: "healthcare"
 tags: ["HIPAA", "PHI", "clinical notes", "date shifting", "research"]
 author: "Philterd"
+creator: "philterd"
 version: "1.0.0"
 updated: "2026-05-18"
 philterCompatibility: ">=3.0.0"

@@ -1,0 +1,61 @@
+{
+  "name": "ferpa-student-records",
+  "config": {
+    "splitting": {
+      "enabled": false,
+      "threshold": 4000
+    }
+  },
+  "ignored": [],
+  "identifiers": {
+    "personsName": {
+      "personsFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "[STUDENT]", "conditions": "confidence > 60"}
+      ]
+    },
+    "date": {
+      "onlyValidDates": true,
+      "dateFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "[REDACTED-DATE]", "conditions": "context == \"birth\""}
+      ]
+    },
+    "ssn": {
+      "ssnFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "[REDACTED-SSN]"}
+      ]
+    },
+    "phoneNumber": {
+      "phoneNumberFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "[REDACTED-PHONE]"}
+      ]
+    },
+    "emailAddress": {
+      "emailAddressFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "[REDACTED-EMAIL]"}
+      ]
+    },
+    "address": {
+      "addressFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "[REDACTED-ADDRESS]"}
+      ]
+    },
+    "identifiers": [
+      {
+        "id": "student-id",
+        "pattern": "\\b(?:SID|STUDENT[\\s-]?ID)[\\s:#]*\\d{6,}\\b",
+        "caseSensitive": false,
+        "identifierFilterStrategies": [
+          {"strategy": "REDACT", "redactionFormat": "[REDACTED-SID]"}
+        ]
+      },
+      {
+        "id": "lunch-id",
+        "pattern": "\\b(?:LUNCH[\\s-]?ID|MEAL[\\s-]?ID)[\\s:#]*\\d{4,}\\b",
+        "caseSensitive": false,
+        "identifierFilterStrategies": [
+          {"strategy": "REDACT", "redactionFormat": "[REDACTED-LUNCHID]"}
+        ]
+      }
+    ]
+  }
+}

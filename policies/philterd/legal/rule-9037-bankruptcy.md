@@ -4,6 +4,7 @@ slug: "rule-9037-bankruptcy"
 category: "legal"
 tags: ["FRBP 9037", "bankruptcy", "court filings", "privacy", "PII"]
 author: "Philterd"
+creator: "philterd"
 version: "1.0.0"
 updated: "2026-05-18"
 philterCompatibility: ">=3.0.0"

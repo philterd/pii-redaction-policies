@@ -4,6 +4,7 @@ slug: "llm-training-data-prep"
 category: "ai-training"
 tags: ["AI", "LLM", "fine-tuning", "training data", "RAG", "ingestion"]
 author: "Philterd"
+creator: "philterd"
 version: "1.0.0"
 updated: "2026-05-18"
 philterCompatibility: ">=3.0.0"

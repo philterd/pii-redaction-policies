@@ -4,6 +4,7 @@ slug: "pci-dss-scope-reduction"
 category: "finance"
 tags: ["PCI DSS", "cardholder data", "PAN", "scope reduction", "Req 3.4"]
 author: "Philterd"
+creator: "philterd"
 version: "1.0.0"
 updated: "2026-05-18"
 philterCompatibility: ">=3.0.0"
