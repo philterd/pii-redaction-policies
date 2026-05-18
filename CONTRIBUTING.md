@@ -11,16 +11,18 @@ Pull requests welcome. The process is designed to be lightweight while still kee
 
 ## File layout
 
-For a policy named `your-policy-slug` in the `healthcare` category:
+Community contributions go under `policies/community/<category>/`. For a community-contributed policy named `your-policy-slug` in the `healthcare` category:
 
 ```
-policies/healthcare/your-policy-slug.json     # the policy itself
-policies/healthcare/your-policy-slug.md       # metadata + description
-examples/inputs/your-policy-slug.txt          # representative input (optional but recommended)
-examples/outputs/your-policy-slug.redacted.txt  # what the policy produces on the above input
+policies/community/healthcare/your-policy-slug.json     # the policy itself
+policies/community/healthcare/your-policy-slug.md       # metadata + description
+examples/inputs/your-policy-slug.txt                    # representative input (optional but recommended)
+examples/outputs/your-policy-slug.redacted.txt          # what the policy produces on the above input
 ```
 
-Slugs are kebab-case and match the URL the policy will get on philterd.ai (`/policies/healthcare/your-policy-slug/`).
+Slugs are kebab-case, **globally unique across both `philterd/` and `community/`**, and match the URL the policy will get on philterd.ai (`/policies/healthcare/your-policy-slug/`). If your slug collides with an existing policy, a reviewer will ask you to rename.
+
+**Why `community/` and not `philterd/`?** The `policies/philterd/` directory is reserved for policies maintained by the core Philterd team — we commit to keeping those current with Philter releases and regulatory changes. Community policies are owned by their contributors; both are valuable but they carry different maintenance expectations.
 
 ## Sidecar `.md` schema
 
@@ -32,7 +34,8 @@ title: "Human-Readable Title"            # required
 slug: "your-policy-slug"                 # required, must match filename
 category: "healthcare"                   # required, must match directory
 tags: ["HIPAA", "Safe Harbor"]           # required, at least one
-author: "Your name or org"               # required
+author: "Your name or org"               # required (display name)
+creator: "your-name-or-org"              # required ("philterd" for core team policies; anything else for community)
 version: "1.0.0"                         # required, semver
 updated: "2026-05-18"                    # required, YYYY-MM-DD
 philterCompatibility: ">=3.0.0"          # required, semver range

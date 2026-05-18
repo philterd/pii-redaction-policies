@@ -12,15 +12,20 @@ A searchable, browsable version of this library is rendered on **[philterd.ai/po
 
 ```
 policies/
-├── healthcare/             HIPAA Safe Harbor, clinical notes, EHR exports
-├── finance/                PCI DSS, GLBA, NPPI handling
-├── legal/                  FRCP 5.2, Bankruptcy Rule 9037, e-discovery
-├── government/             FOIA preparation, FedRAMP-adjacent
-├── education/              FERPA, student records
-├── ai-training/            LLM fine-tuning data prep, RAG ingestion
-├── contact-center/         Call-recording transcripts, PCI scope reduction
-└── general/                General-purpose starting points
+├── philterd/               Policies maintained by the Philterd team
+│   ├── healthcare/         HIPAA Safe Harbor, clinical notes, medical chatbot
+│   ├── finance/            PCI DSS, GLBA NPPI
+│   ├── legal/              Bankruptcy Rule 9037, e-discovery
+│   ├── government/         FOIA preparation, FedRAMP-adjacent
+│   ├── education/          FERPA, student records
+│   ├── ai-training/        LLM fine-tuning data prep, RAG ingestion
+│   ├── contact-center/     Call-recording transcripts, PCI scope reduction
+│   └── general/            General-purpose starting points
+└── community/              Policies contributed by the community
+    └── <category>/         Same per-category layout
 ```
+
+**Why the philterd/ vs community/ split:** policies under `philterd/` are maintained by the core team and kept current with Philter releases. Policies under `community/` are owned by their contributors. Both are valuable; the split makes it obvious which is which.
 
 For each policy, two files live in the same directory:
 
@@ -35,7 +40,7 @@ For each policy, two files live in the same directory:
 
 ```bash
 # Download the policy
-curl -O https://raw.githubusercontent.com/philterd/pii-redaction-policies/main/policies/healthcare/hipaa-safe-harbor.json
+curl -O https://raw.githubusercontent.com/philterd/pii-redaction-policies/main/policies/philterd/healthcare/hipaa-safe-harbor.json
 
 # Upload to your Philter instance
 curl -X POST http://localhost:8080/api/policies \

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Validates every policy in this repo. Runs in CI on every PR.
-# - Each .json under policies/ must parse as valid JSON
+# - Each .json under policies/{philterd,community}/<category>/ must parse as valid JSON
 # - Each .json must have a sibling .md
-# - Each .md must have the required frontmatter fields
+# - Each .md must have the required frontmatter fields, including `creator`
 # - JSON schema validation (if a schema validator is available)
 
 set -euo pipefail
@@ -14,8 +14,9 @@ errors=0
 checked=0
 
 # Required frontmatter keys in every sidecar .md
-REQUIRED_FRONTMATTER=(title slug category tags author version updated philterCompatibility useCase entities)
+REQUIRED_FRONTMATTER=(title slug category tags author creator version updated philterCompatibility useCase entities)
 
+# Look in both philterd/ and community/ trees. README.md files in subdirectories are skipped.
 while IFS= read -r json; do
   checked=$((checked + 1))
 
@@ -50,7 +51,7 @@ while IFS= read -r json; do
     errors=$((errors + 1))
   fi
 
-  # Category in frontmatter matches directory
+  # Category in frontmatter matches directory (the leaf directory under philterd/ or community/)
   category_from_md=$(grep -m1 '^category:' "$md" | sed -E 's/^category:[[:space:]]*"?([^"]+)"?[[:space:]]*$/\1/')
   category_from_path=$(basename "$(dirname "$json")")
   if [ "$category_from_md" != "$category_from_path" ]; then
@@ -58,7 +59,31 @@ while IFS= read -r json; do
     errors=$((errors + 1))
   fi
 
-done < <(find policies -name '*.json' -type f | sort)
+  # Creator must be either "philterd" (for policies under policies/philterd/) or anything else (for policies under policies/community/)
+  creator_from_md=$(grep -m1 '^creator:' "$md" | sed -E 's/^creator:[[:space:]]*"?([^"]+)"?[[:space:]]*$/\1/')
+  provenance_from_path=$(basename "$(dirname "$(dirname "$json")")")
+  if [ "$provenance_from_path" = "philterd" ] && [ "$creator_from_md" != "philterd" ]; then
+    echo "ERROR: $md is under policies/philterd/ but creator is '$creator_from_md' (must be 'philterd')"
+    errors=$((errors + 1))
+  fi
+  if [ "$provenance_from_path" = "community" ] && [ "$creator_from_md" = "philterd" ]; then
+    echo "ERROR: $md is under policies/community/ but creator is 'philterd' (reserved for the core team's policies under policies/philterd/)"
+    errors=$((errors + 1))
+  fi
+
+  # Slugs must be globally unique across philterd/ and community/
+  # (handled below, outside the per-file loop)
+
+done < <(find policies/philterd policies/community -name '*.json' -type f 2>/dev/null | sort)
+
+# Check for slug collisions across all policies
+duplicate_slugs=$(find policies/philterd policies/community -name '*.json' -type f 2>/dev/null | xargs -n1 basename 2>/dev/null | sort | uniq -d)
+if [ -n "$duplicate_slugs" ]; then
+  while IFS= read -r dup; do
+    echo "ERROR: slug collision: '$dup' appears in multiple policies. Slugs must be globally unique."
+    errors=$((errors + 1))
+  done <<< "$duplicate_slugs"
+fi
 
 echo
 echo "Checked $checked policy file(s)."
