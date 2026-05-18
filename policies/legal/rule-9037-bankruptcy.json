@@ -1,0 +1,45 @@
+{
+  "name": "rule-9037-bankruptcy",
+  "config": {
+    "splitting": {
+      "enabled": false,
+      "threshold": 4000
+    }
+  },
+  "ignored": [],
+  "identifiers": {
+    "ssn": {
+      "ssnFilterStrategies": [
+        {"strategy": "MASK", "maskCharacter": "x", "maskLength": "SAME", "leaveCharacters": 4}
+      ]
+    },
+    "date": {
+      "onlyValidDates": true,
+      "dateFilterStrategies": [
+        {"strategy": "TRUNCATE", "truncateDigits": 4, "redactionFormat": "%Y", "conditions": "context == \"birth\""}
+      ]
+    },
+    "personsName": {
+      "personsFilterStrategies": [
+        {"strategy": "ABBREVIATE", "abbreviateFormat": "INITIALS", "conditions": "context == \"minor\""}
+      ]
+    },
+    "identifiers": [
+      {
+        "id": "tin",
+        "pattern": "\\b\\d{2}[-\\s]?\\d{7}\\b",
+        "identifierFilterStrategies": [
+          {"strategy": "MASK", "maskCharacter": "x", "maskLength": "SAME", "leaveCharacters": 4}
+        ]
+      },
+      {
+        "id": "financial-account",
+        "pattern": "\\b(?:ACCT|ACCOUNT)[\\s:#]*\\d{6,}\\b",
+        "caseSensitive": false,
+        "identifierFilterStrategies": [
+          {"strategy": "MASK", "maskCharacter": "x", "maskLength": "SAME", "leaveCharacters": 4}
+        ]
+      }
+    ]
+  }
+}

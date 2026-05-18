@@ -1,0 +1,1 @@
+Patient John Smith (DOB 1985-04-12, MRN 47291) was seen at Mercy Hospital in Travis County on 2025-03-14. The patient is 47 years old. Email: jsmith@example.com. Phone: (555) 123-4567. SSN: 123-45-6789. Address: 1234 Oak Street, Austin, TX 78701.

@@ -1,0 +1,63 @@
+{
+  "name": "general-purpose",
+  "config": {
+    "splitting": {
+      "enabled": false,
+      "threshold": 4000
+    }
+  },
+  "ignored": [],
+  "identifiers": {
+    "personsName": {
+      "personsFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}", "conditions": "confidence > 70"}
+      ]
+    },
+    "phoneNumber": {
+      "phoneNumberFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "emailAddress": {
+      "emailAddressFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "ssn": {
+      "ssnFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "creditCard": {
+      "onlyValidCreditCards": true,
+      "creditCardFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "ipAddress": {
+      "ipAddressFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "url": {
+      "urlFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "iban": {
+      "ibanFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "passportNumber": {
+      "passportNumberFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "driversLicense": {
+      "driversLicenseFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    }
+  }
+}

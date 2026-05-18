@@ -1,0 +1,1 @@
+Patient {{{REDACTED-person}}} (DOB {{{REDACTED-date}}}, {{{REDACTED-MRN}}}) was seen at {{{REDACTED-hospital}}} in {{{REDACTED-county}}} on {{{REDACTED-date}}}. The patient is 47 years old. Email: {{{REDACTED-email-address}}}. Phone: {{{REDACTED-phone-number}}}. SSN: {{{REDACTED-ssn}}}. Address: 1234 Oak Street, {{{REDACTED-city}}}, TX 787.

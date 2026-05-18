@@ -1,0 +1,92 @@
+{
+  "name": "hipaa-safe-harbor",
+  "config": {
+    "splitting": {
+      "enabled": false,
+      "threshold": 4000
+    }
+  },
+  "ignored": [],
+  "ignoredPatterns": [],
+  "identifiers": {
+    "age": {
+      "ageFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}", "conditions": "context == \"age\" > 89"}
+      ]
+    },
+    "date": {
+      "onlyValidDates": true,
+      "dateFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "phoneNumber": {
+      "phoneNumberFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "emailAddress": {
+      "emailAddressFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "ssn": {
+      "ssnFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "ipAddress": {
+      "ipAddressFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "url": {
+      "urlFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "zipCode": {
+      "zipCodeFilterStrategies": [
+        {"strategy": "TRUNCATE", "truncateDigits": 3}
+      ]
+    },
+    "personsName": {
+      "personsFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "hospital": {
+      "hospitalFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "city": {
+      "cityFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "county": {
+      "countyFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-%t}}}"}
+      ]
+    },
+    "identifiers": [
+      {
+        "id": "mrn",
+        "pattern": "\\bMRN[\\s:#]*\\d{5,}\\b",
+        "caseSensitive": false,
+        "identifierFilterStrategies": [
+          {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-MRN}}}"}
+        ]
+      },
+      {
+        "id": "account-number",
+        "pattern": "\\bACCT[\\s:#]*\\d{6,}\\b",
+        "caseSensitive": false,
+        "identifierFilterStrategies": [
+          {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-ACCOUNT}}}"}
+        ]
+      }
+    ]
+  }
+}

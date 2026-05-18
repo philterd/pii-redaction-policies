@@ -1,0 +1,63 @@
+{
+  "name": "clinical-notes-deid",
+  "config": {
+    "splitting": {
+      "enabled": true,
+      "threshold": 8000
+    }
+  },
+  "ignored": [],
+  "identifiers": {
+    "personsName": {
+      "personsFilterStrategies": [
+        {"strategy": "REPLACE", "redactionFormat": "[PATIENT]", "conditions": "confidence > 60"}
+      ]
+    },
+    "physicianName": {
+      "physicianNameFilterStrategies": [
+        {"strategy": "REPLACE", "redactionFormat": "[PROVIDER]"}
+      ]
+    },
+    "date": {
+      "onlyValidDates": true,
+      "dateFilterStrategies": [
+        {"strategy": "SHIFT", "shiftDays": "RANDOM(-90,90)"}
+      ]
+    },
+    "age": {
+      "ageFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "[AGE>89]", "conditions": "context == \"age\" > 89"}
+      ]
+    },
+    "phoneNumber": {
+      "phoneNumberFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "[PHONE]"}
+      ]
+    },
+    "ssn": {
+      "ssnFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "[SSN]"}
+      ]
+    },
+    "emailAddress": {
+      "emailAddressFilterStrategies": [
+        {"strategy": "REDACT", "redactionFormat": "[EMAIL]"}
+      ]
+    },
+    "hospital": {
+      "hospitalFilterStrategies": [
+        {"strategy": "REPLACE", "redactionFormat": "[FACILITY]"}
+      ]
+    },
+    "identifiers": [
+      {
+        "id": "mrn",
+        "pattern": "\\bMRN[\\s:#]*\\d{5,}\\b",
+        "caseSensitive": false,
+        "identifierFilterStrategies": [
+          {"strategy": "REDACT", "redactionFormat": "[MRN]"}
+        ]
+      }
+    ]
+  }
+}
