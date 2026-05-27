@@ -7,12 +7,12 @@
   },
   "ignored": [],
   "identifiers": {
-    "personsName": {
-      "personsFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "{{{REDACTED-%t}}}",
-          "conditions": "confidence > 70"
+          "condition": "confidence > 70"
         }
       ]
     },
@@ -41,7 +41,7 @@
       ]
     },
     "creditCard": {
-      "onlyValidCreditCards": true,
+      "onlyValidCreditCardNumbers": true,
       "creditCardFilterStrategies": [
         {
           "strategy": "REDACT",
@@ -65,8 +65,8 @@
         }
       ]
     },
-    "iban": {
-      "ibanFilterStrategies": [
+    "ibanCode": {
+      "ibanCodeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "{{{REDACTED-%t}}}"

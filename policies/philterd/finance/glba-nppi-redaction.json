@@ -7,12 +7,12 @@
   },
   "ignored": [],
   "identifiers": {
-    "personsName": {
-      "personsFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "[CUSTOMER]",
-          "conditions": "confidence > 65"
+          "condition": "confidence > 65"
         }
       ]
     },
@@ -25,7 +25,7 @@
       ]
     },
     "creditCard": {
-      "onlyValidCreditCards": true,
+      "onlyValidCreditCardNumbers": true,
       "creditCardFilterStrategies": [
         {
           "strategy": "MASK",
@@ -35,8 +35,8 @@
         }
       ]
     },
-    "iban": {
-      "ibanFilterStrategies": [
+    "ibanCode": {
+      "ibanCodeFilterStrategies": [
         {
           "strategy": "MASK",
           "maskCharacter": "*",
@@ -49,10 +49,8 @@
       "onlyValidDates": true,
       "dateFilterStrategies": [
         {
-          "strategy": "TRUNCATE",
-          "truncateDigits": 4,
-          "redactionFormat": "%Y",
-          "conditions": "context == \"birth\""
+          "strategy": "TRUNCATE_TO_YEAR",
+          "condition": "context == \"birth\""
         }
       ]
     },
@@ -72,8 +70,8 @@
         }
       ]
     },
-    "address": {
-      "addressFilterStrategies": [
+    "streetAddress": {
+      "streetAddressFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "[REDACTED-ADDRESS]"
@@ -98,7 +96,7 @@
     },
     "identifiers": [
       {
-        "id": "routing-number",
+        "classification": "routing-number",
         "pattern": "\\b(?:ABA|RTN|routing)[\\s:#]*\\d{9}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
@@ -109,7 +107,7 @@
         ]
       },
       {
-        "id": "account-number",
+        "classification": "account-number",
         "pattern": "\\b(?:account|acct)[\\s:#]*(?:number|#)?[\\s:#]*\\d{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
@@ -122,7 +120,7 @@
         ]
       },
       {
-        "id": "loan-number",
+        "classification": "loan-number",
         "pattern": "\\b(?:loan|mortgage|note)[\\s:#]*(?:number|#)?[\\s:#]*[A-Z0-9-]{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [

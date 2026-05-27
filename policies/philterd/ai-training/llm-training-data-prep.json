@@ -7,19 +7,19 @@
   },
   "ignored": [],
   "identifiers": {
-    "personsName": {
-      "personsFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[PERSON]",
-          "conditions": "confidence > 55"
+          "condition": "confidence > 55"
         }
       ]
     },
     "phoneNumber": {
       "phoneNumberFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[PHONE]"
         }
       ]
@@ -27,7 +27,7 @@
     "emailAddress": {
       "emailAddressFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[EMAIL]"
         }
       ]
@@ -35,16 +35,16 @@
     "ssn": {
       "ssnFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[SSN]"
         }
       ]
     },
     "creditCard": {
-      "onlyValidCreditCards": true,
+      "onlyValidCreditCardNumbers": true,
       "creditCardFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[CARD]"
         }
       ]
@@ -52,7 +52,7 @@
     "ipAddress": {
       "ipAddressFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[IP]"
         }
       ]
@@ -60,7 +60,7 @@
     "url": {
       "urlFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[URL]"
         }
       ]
@@ -68,7 +68,7 @@
     "passportNumber": {
       "passportNumberFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[PASSPORT]"
         }
       ]
@@ -76,15 +76,15 @@
     "driversLicense": {
       "driversLicenseFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[LICENSE]"
         }
       ]
     },
-    "iban": {
-      "ibanFilterStrategies": [
+    "ibanCode": {
+      "ibanCodeFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[IBAN]"
         }
       ]
@@ -92,7 +92,7 @@
     "physicianName": {
       "physicianNameFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[PERSON]"
         }
       ]
@@ -100,7 +100,7 @@
     "hospital": {
       "hospitalFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[ORG]"
         }
       ]
@@ -108,15 +108,15 @@
     "city": {
       "cityFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[LOCATION]"
         }
       ]
     },
-    "address": {
-      "addressFilterStrategies": [
+    "streetAddress": {
+      "streetAddressFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[ADDRESS]"
         }
       ]

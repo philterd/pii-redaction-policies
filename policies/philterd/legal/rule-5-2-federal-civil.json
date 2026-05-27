@@ -21,25 +21,23 @@
       "onlyValidDates": true,
       "dateFilterStrategies": [
         {
-          "strategy": "TRUNCATE",
-          "truncateDigits": 4,
-          "redactionFormat": "%Y",
-          "conditions": "context == \"birth\""
+          "strategy": "TRUNCATE_TO_YEAR",
+          "condition": "context == \"birth\""
         }
       ]
     },
-    "personsName": {
-      "personsFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
           "strategy": "ABBREVIATE",
           "abbreviateFormat": "INITIALS",
-          "conditions": "context == \"minor\""
+          "condition": "context == \"minor\""
         }
       ]
     },
     "identifiers": [
       {
-        "id": "tin",
+        "classification": "tin",
         "pattern": "\\b\\d{2}[-\\s]?\\d{7}\\b",
         "identifierFilterStrategies": [
           {
@@ -51,7 +49,7 @@
         ]
       },
       {
-        "id": "financial-account",
+        "classification": "financial-account",
         "pattern": "\\b(?:ACCT|ACCOUNT)[\\s:#]*\\d{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [

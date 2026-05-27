@@ -8,7 +8,7 @@
   "ignored": [],
   "identifiers": {
     "creditCard": {
-      "onlyValidCreditCards": true,
+      "onlyValidCreditCardNumbers": true,
       "creditCardFilterStrategies": [
         {
           "strategy": "MASK",
@@ -48,12 +48,12 @@
         {
           "strategy": "REDACT",
           "redactionFormat": "[REDACTED-DATE]",
-          "conditions": "context == \"birth\""
+          "condition": "context == \"birth\""
         }
       ]
     },
-    "address": {
-      "addressFilterStrategies": [
+    "streetAddress": {
+      "streetAddressFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "[REDACTED-ADDRESS]"
@@ -62,7 +62,7 @@
     },
     "identifiers": [
       {
-        "id": "cvv-spoken",
+        "classification": "cvv-spoken",
         "pattern": "\\b(?:CVV|CVC|CSC|security[\\s-]?code|three[\\s-]?digit[\\s-]?code|verification[\\s-]?code|card[\\s-]?code)[\\s:#]*\\d{3,4}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
@@ -73,7 +73,7 @@
         ]
       },
       {
-        "id": "account-number-spoken",
+        "classification": "account-number-spoken",
         "pattern": "\\b(?:account|acct)[\\s:#]*(?:number|#)?[\\s:#]*\\d{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
@@ -86,7 +86,7 @@
         ]
       },
       {
-        "id": "card-expiration-spoken",
+        "classification": "card-expiration-spoken",
         "pattern": "\\b(?:expires?|expiration|exp)[\\s:#]*(0[1-9]|1[0-2])[/\\-](\\d{2}|\\d{4})\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [

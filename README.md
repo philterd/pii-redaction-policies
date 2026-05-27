@@ -69,6 +69,10 @@ Each policy carries its own semver in its `.md` frontmatter. The repo itself is 
 
 All policies are released under the [Apache License 2.0](LICENSE), matching the rest of the [Philterd toolkit](https://github.com/philterd). Contributions are accepted under the same terms.
 
+## Policy schema
+
+All policies are validated against the [redaction policy JSON schema](https://github.com/philterd/phileas/blob/main/policy-schema/redaction-policy-schema.json) maintained in the Phileas repository.
+
 ## Compatibility
 
 Policies in this repo target Philter `>=3.0.0` unless a specific compatibility range is noted in the policy's `.md` frontmatter. Older versions may need minor adjustments to the JSON schema.

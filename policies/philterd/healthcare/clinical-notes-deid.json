@@ -7,19 +7,19 @@
   },
   "ignored": [],
   "identifiers": {
-    "personsName": {
-      "personsFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[PATIENT]",
-          "conditions": "confidence > 60"
+          "condition": "confidence > 60"
         }
       ]
     },
     "physicianName": {
       "physicianNameFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[PROVIDER]"
         }
       ]
@@ -29,7 +29,7 @@
       "dateFilterStrategies": [
         {
           "strategy": "SHIFT",
-          "shiftDays": "RANDOM(-90,90)"
+          "shiftDays": 90
         }
       ]
     },
@@ -38,7 +38,7 @@
         {
           "strategy": "REDACT",
           "redactionFormat": "[AGE>89]",
-          "conditions": "context == \"age\" > 89"
+          "condition": "context == \"age\" > 89"
         }
       ]
     },
@@ -69,14 +69,14 @@
     "hospital": {
       "hospitalFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[FACILITY]"
         }
       ]
     },
     "identifiers": [
       {
-        "id": "mrn",
+        "classification": "mrn",
         "pattern": "\\bMRN[\\s:#]*\\d{5,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [

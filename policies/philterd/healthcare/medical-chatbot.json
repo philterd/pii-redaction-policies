@@ -7,12 +7,12 @@
   },
   "ignored": [],
   "identifiers": {
-    "personsName": {
-      "personsFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[PERSON]",
-          "conditions": "confidence > 50"
+          "condition": "confidence > 50"
         }
       ]
     },
@@ -21,7 +21,7 @@
         {
           "strategy": "REDACT",
           "redactionFormat": "[AGE>89]",
-          "conditions": "context == \"age\" > 89"
+          "condition": "context == \"age\" > 89"
         }
       ]
     },
@@ -58,8 +58,8 @@
         }
       ]
     },
-    "address": {
-      "addressFilterStrategies": [
+    "streetAddress": {
+      "streetAddressFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "[REDACTED-ADDRESS]"
@@ -67,7 +67,7 @@
       ]
     },
     "zipCode": {
-      "zipCodeFilterStrategies": [
+      "zipCodeFilterStrategy": [
         {
           "strategy": "TRUNCATE",
           "truncateDigits": 3
@@ -85,7 +85,7 @@
     "hospital": {
       "hospitalFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[FACILITY]"
         }
       ]
@@ -93,14 +93,14 @@
     "physicianName": {
       "physicianNameFilterStrategies": [
         {
-          "strategy": "REPLACE",
+          "strategy": "REDACT",
           "redactionFormat": "[PROVIDER]"
         }
       ]
     },
     "identifiers": [
       {
-        "id": "mrn",
+        "classification": "mrn",
         "pattern": "\\bMRN[\\s:#]*\\d{5,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
@@ -111,7 +111,7 @@
         ]
       },
       {
-        "id": "insurance-id",
+        "classification": "insurance-id",
         "pattern": "\\b(?:member|policy|insurance|plan)[\\s-]?(?:id|number|#)[\\s:#]*[A-Z0-9-]{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [

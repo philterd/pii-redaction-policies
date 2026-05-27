@@ -7,12 +7,12 @@
   },
   "ignored": [],
   "identifiers": {
-    "personsName": {
-      "personsFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "[STUDENT]",
-          "conditions": "confidence > 60"
+          "condition": "confidence > 60"
         }
       ]
     },
@@ -22,7 +22,7 @@
         {
           "strategy": "REDACT",
           "redactionFormat": "[REDACTED-DATE]",
-          "conditions": "context == \"birth\""
+          "condition": "context == \"birth\""
         }
       ]
     },
@@ -50,8 +50,8 @@
         }
       ]
     },
-    "address": {
-      "addressFilterStrategies": [
+    "streetAddress": {
+      "streetAddressFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "[REDACTED-ADDRESS]"
@@ -60,7 +60,7 @@
     },
     "identifiers": [
       {
-        "id": "student-id",
+        "classification": "student-id",
         "pattern": "\\b(?:SID|STUDENT[\\s-]?ID)[\\s:#]*\\d{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
@@ -71,7 +71,7 @@
         ]
       },
       {
-        "id": "lunch-id",
+        "classification": "lunch-id",
         "pattern": "\\b(?:LUNCH[\\s-]?ID|MEAL[\\s-]?ID)[\\s:#]*\\d{4,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
