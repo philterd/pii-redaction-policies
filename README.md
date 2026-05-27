@@ -4,6 +4,10 @@ A curated, community-contributed library of [Philter](https://philterd.ai/philte
 
 Each policy is a working JSON file you can drop into a Philter or Phileas deployment. Each policy is paired with a sidecar `.md` file that documents what it does, when to use it, what's tunable, and a sample input/output pair.
 
+## Policy schema
+
+All policies are validated against the [redaction policy JSON schema](https://github.com/philterd/phileas/blob/main/policy-schema/redaction-policy-schema.json) maintained in the Phileas repository.
+
 ## Browse the library
 
 A searchable, browsable version of this library is rendered on **[philterd.ai/policies/](https://philterd.ai/policies/)**.
@@ -68,10 +72,6 @@ Each policy carries its own semver in its `.md` frontmatter. The repo itself is 
 ## License
 
 All policies are released under the [Apache License 2.0](LICENSE), matching the rest of the [Philterd toolkit](https://github.com/philterd). Contributions are accepted under the same terms.
-
-## Policy schema
-
-All policies are validated against the [redaction policy JSON schema](https://github.com/philterd/phileas/blob/main/policy-schema/redaction-policy-schema.json) maintained in the Phileas repository.
 
 ## Compatibility
 
