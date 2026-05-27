@@ -1,5 +1,4 @@
 {
-  "name": "medical-chatbot",
   "config": {
     "splitting": {
       "enabled": false,
@@ -10,58 +9,93 @@
   "identifiers": {
     "personsName": {
       "personsFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PERSON]", "conditions": "confidence > 50"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[PERSON]",
+          "conditions": "confidence > 50"
+        }
       ]
     },
     "age": {
       "ageFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[AGE>89]", "conditions": "context == \"age\" > 89"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[AGE>89]",
+          "conditions": "context == \"age\" > 89"
+        }
       ]
     },
     "date": {
       "onlyValidDates": true,
       "dateFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-DATE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-DATE]"
+        }
       ]
     },
     "phoneNumber": {
       "phoneNumberFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-PHONE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-PHONE]"
+        }
       ]
     },
     "emailAddress": {
       "emailAddressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-EMAIL]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-EMAIL]"
+        }
       ]
     },
     "ssn": {
       "ssnFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-SSN]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-SSN]"
+        }
       ]
     },
     "address": {
       "addressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-ADDRESS]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-ADDRESS]"
+        }
       ]
     },
     "zipCode": {
       "zipCodeFilterStrategies": [
-        {"strategy": "TRUNCATE", "truncateDigits": 3}
+        {
+          "strategy": "TRUNCATE",
+          "truncateDigits": 3
+        }
       ]
     },
     "ipAddress": {
       "ipAddressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-IP]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-IP]"
+        }
       ]
     },
     "hospital": {
       "hospitalFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[FACILITY]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[FACILITY]"
+        }
       ]
     },
     "physicianName": {
       "physicianNameFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PROVIDER]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[PROVIDER]"
+        }
       ]
     },
     "identifiers": [
@@ -70,7 +104,10 @@
         "pattern": "\\bMRN[\\s:#]*\\d{5,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[REDACTED-MRN]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-MRN]"
+          }
         ]
       },
       {
@@ -78,7 +115,10 @@
         "pattern": "\\b(?:member|policy|insurance|plan)[\\s-]?(?:id|number|#)[\\s:#]*[A-Z0-9-]{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[REDACTED-INSURANCE-ID]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-INSURANCE-ID]"
+          }
         ]
       }
     ]

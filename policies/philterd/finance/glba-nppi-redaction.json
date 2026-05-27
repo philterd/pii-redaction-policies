@@ -1,5 +1,4 @@
 {
-  "name": "glba-nppi-redaction",
   "config": {
     "splitting": {
       "enabled": false,
@@ -10,54 +9,91 @@
   "identifiers": {
     "personsName": {
       "personsFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[CUSTOMER]", "conditions": "confidence > 65"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[CUSTOMER]",
+          "conditions": "confidence > 65"
+        }
       ]
     },
     "ssn": {
       "ssnFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-SSN]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-SSN]"
+        }
       ]
     },
     "creditCard": {
       "onlyValidCreditCards": true,
       "creditCardFilterStrategies": [
-        {"strategy": "MASK", "maskCharacter": "*", "maskLength": "SAME", "leaveCharacters": 4}
+        {
+          "strategy": "MASK",
+          "maskCharacter": "*",
+          "maskLength": "SAME",
+          "leaveCharacters": 4
+        }
       ]
     },
     "iban": {
       "ibanFilterStrategies": [
-        {"strategy": "MASK", "maskCharacter": "*", "maskLength": "SAME", "leaveCharacters": 4}
+        {
+          "strategy": "MASK",
+          "maskCharacter": "*",
+          "maskLength": "SAME",
+          "leaveCharacters": 4
+        }
       ]
     },
     "date": {
       "onlyValidDates": true,
       "dateFilterStrategies": [
-        {"strategy": "TRUNCATE", "truncateDigits": 4, "redactionFormat": "%Y", "conditions": "context == \"birth\""}
+        {
+          "strategy": "TRUNCATE",
+          "truncateDigits": 4,
+          "redactionFormat": "%Y",
+          "conditions": "context == \"birth\""
+        }
       ]
     },
     "phoneNumber": {
       "phoneNumberFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-PHONE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-PHONE]"
+        }
       ]
     },
     "emailAddress": {
       "emailAddressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-EMAIL]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-EMAIL]"
+        }
       ]
     },
     "address": {
       "addressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-ADDRESS]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-ADDRESS]"
+        }
       ]
     },
     "driversLicense": {
       "driversLicenseFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-LICENSE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-LICENSE]"
+        }
       ]
     },
     "passportNumber": {
       "passportNumberFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-PASSPORT]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-PASSPORT]"
+        }
       ]
     },
     "identifiers": [
@@ -66,7 +102,10 @@
         "pattern": "\\b(?:ABA|RTN|routing)[\\s:#]*\\d{9}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[REDACTED-RTN]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-RTN]"
+          }
         ]
       },
       {
@@ -74,7 +113,12 @@
         "pattern": "\\b(?:account|acct)[\\s:#]*(?:number|#)?[\\s:#]*\\d{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "MASK", "maskCharacter": "*", "maskLength": "SAME", "leaveCharacters": 4}
+          {
+            "strategy": "MASK",
+            "maskCharacter": "*",
+            "maskLength": "SAME",
+            "leaveCharacters": 4
+          }
         ]
       },
       {
@@ -82,7 +126,10 @@
         "pattern": "\\b(?:loan|mortgage|note)[\\s:#]*(?:number|#)?[\\s:#]*[A-Z0-9-]{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[REDACTED-LOAN]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-LOAN]"
+          }
         ]
       }
     ]

@@ -1,5 +1,4 @@
 {
-  "name": "llm-training-data-prep",
   "config": {
     "splitting": {
       "enabled": true,
@@ -10,73 +9,116 @@
   "identifiers": {
     "personsName": {
       "personsFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PERSON]", "conditions": "confidence > 55"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[PERSON]",
+          "conditions": "confidence > 55"
+        }
       ]
     },
     "phoneNumber": {
       "phoneNumberFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PHONE]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[PHONE]"
+        }
       ]
     },
     "emailAddress": {
       "emailAddressFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[EMAIL]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[EMAIL]"
+        }
       ]
     },
     "ssn": {
       "ssnFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[SSN]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[SSN]"
+        }
       ]
     },
     "creditCard": {
       "onlyValidCreditCards": true,
       "creditCardFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[CARD]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[CARD]"
+        }
       ]
     },
     "ipAddress": {
       "ipAddressFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[IP]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[IP]"
+        }
       ]
     },
     "url": {
       "urlFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[URL]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[URL]"
+        }
       ]
     },
     "passportNumber": {
       "passportNumberFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PASSPORT]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[PASSPORT]"
+        }
       ]
     },
     "driversLicense": {
       "driversLicenseFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[LICENSE]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[LICENSE]"
+        }
       ]
     },
     "iban": {
       "ibanFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[IBAN]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[IBAN]"
+        }
       ]
     },
     "physicianName": {
       "physicianNameFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PERSON]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[PERSON]"
+        }
       ]
     },
     "hospital": {
       "hospitalFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[ORG]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[ORG]"
+        }
       ]
     },
     "city": {
       "cityFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[LOCATION]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[LOCATION]"
+        }
       ]
     },
     "address": {
       "addressFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[ADDRESS]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[ADDRESS]"
+        }
       ]
     }
   }

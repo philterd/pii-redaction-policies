@@ -17,5 +17,21 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install jsonschema
+        run: pip install jsonschema
+
+      - name: Fetch schema and validator from phileas
+        run: |
+          curl -fsSL -o /tmp/redaction-policy-schema.json \
+            https://raw.githubusercontent.com/philterd/phileas/main/policy-schema/redaction-policy-schema.json
+          curl -fsSL -o /tmp/validate-policy.py \
+            https://raw.githubusercontent.com/philterd/phileas/main/policy-schema/validate-policy.py
+
       - name: Run policy validation
         run: bash tests/validate.sh
+
+      - name: Validate policies against schema
+        run: |
+          python3 /tmp/validate-policy.py \
+            --schema /tmp/redaction-policy-schema.json \
+            $(find policies -name '*.json' -type f)

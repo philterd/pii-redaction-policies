@@ -70,7 +70,7 @@ This checks:
 - Every `.json` parses as valid JSON
 - Every `.json` has a sibling `.md`
 - Every `.md` has the required frontmatter fields
-- Every policy passes the JSON schema in `schema/policy.schema.json`
+- Every policy passes the JSON schema validation (schema fetched from the [phileas](https://github.com/philterd/phileas) repository)
 - Golden-file tests: if `examples/inputs/<slug>.txt` exists, the policy must produce `examples/outputs/<slug>.redacted.txt` (skipped if no input file is provided)
 
 CI runs the same checks on every PR.

@@ -1,5 +1,4 @@
 {
-  "name": "clinical-notes-deid",
   "config": {
     "splitting": {
       "enabled": true,
@@ -10,43 +9,69 @@
   "identifiers": {
     "personsName": {
       "personsFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PATIENT]", "conditions": "confidence > 60"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[PATIENT]",
+          "conditions": "confidence > 60"
+        }
       ]
     },
     "physicianName": {
       "physicianNameFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PROVIDER]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[PROVIDER]"
+        }
       ]
     },
     "date": {
       "onlyValidDates": true,
       "dateFilterStrategies": [
-        {"strategy": "SHIFT", "shiftDays": "RANDOM(-90,90)"}
+        {
+          "strategy": "SHIFT",
+          "shiftDays": "RANDOM(-90,90)"
+        }
       ]
     },
     "age": {
       "ageFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[AGE>89]", "conditions": "context == \"age\" > 89"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[AGE>89]",
+          "conditions": "context == \"age\" > 89"
+        }
       ]
     },
     "phoneNumber": {
       "phoneNumberFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[PHONE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PHONE]"
+        }
       ]
     },
     "ssn": {
       "ssnFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[SSN]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[SSN]"
+        }
       ]
     },
     "emailAddress": {
       "emailAddressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[EMAIL]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[EMAIL]"
+        }
       ]
     },
     "hospital": {
       "hospitalFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[FACILITY]"}
+        {
+          "strategy": "REPLACE",
+          "redactionFormat": "[FACILITY]"
+        }
       ]
     },
     "identifiers": [
@@ -55,7 +80,10 @@
         "pattern": "\\bMRN[\\s:#]*\\d{5,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[MRN]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[MRN]"
+          }
         ]
       }
     ]

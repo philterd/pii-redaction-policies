@@ -1,5 +1,4 @@
 {
-  "name": "state-court-filings-baseline",
   "config": {
     "splitting": {
       "enabled": false,
@@ -10,33 +9,60 @@
   "identifiers": {
     "ssn": {
       "ssnFilterStrategies": [
-        {"strategy": "MASK", "maskCharacter": "x", "maskLength": "SAME", "leaveCharacters": 4}
+        {
+          "strategy": "MASK",
+          "maskCharacter": "x",
+          "maskLength": "SAME",
+          "leaveCharacters": 4
+        }
       ]
     },
     "date": {
       "onlyValidDates": true,
       "dateFilterStrategies": [
-        {"strategy": "TRUNCATE", "truncateDigits": 4, "redactionFormat": "%Y", "conditions": "context == \"birth\""}
+        {
+          "strategy": "TRUNCATE",
+          "truncateDigits": 4,
+          "redactionFormat": "%Y",
+          "conditions": "context == \"birth\""
+        }
       ]
     },
     "personsName": {
       "personsFilterStrategies": [
-        {"strategy": "ABBREVIATE", "abbreviateFormat": "INITIALS", "conditions": "context == \"minor\""}
+        {
+          "strategy": "ABBREVIATE",
+          "abbreviateFormat": "INITIALS",
+          "conditions": "context == \"minor\""
+        }
       ]
     },
     "phoneNumber": {
       "phoneNumberFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-phone-number}}}", "conditions": "context == \"witness\" or context == \"victim\""}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-phone-number}}}",
+          "conditions": "context == \"witness\" or context == \"victim\""
+        }
       ]
     },
     "driversLicense": {
       "driversLicenseFilterStrategies": [
-        {"strategy": "MASK", "maskCharacter": "x", "maskLength": "SAME", "leaveCharacters": 0}
+        {
+          "strategy": "MASK",
+          "maskCharacter": "x",
+          "maskLength": "SAME",
+          "leaveCharacters": 0
+        }
       ]
     },
     "streetAddress": {
       "streetAddressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "{{{REDACTED-address}}}", "conditions": "context == \"witness\" or context == \"victim\""}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-address}}}",
+          "conditions": "context == \"witness\" or context == \"victim\""
+        }
       ]
     },
     "identifiers": [
@@ -44,7 +70,12 @@
         "id": "tin",
         "pattern": "\\b\\d{2}[-\\s]?\\d{7}\\b",
         "identifierFilterStrategies": [
-          {"strategy": "MASK", "maskCharacter": "x", "maskLength": "SAME", "leaveCharacters": 4}
+          {
+            "strategy": "MASK",
+            "maskCharacter": "x",
+            "maskLength": "SAME",
+            "leaveCharacters": 4
+          }
         ]
       },
       {
@@ -52,7 +83,12 @@
         "pattern": "\\b(?:ACCT|ACCOUNT)[\\s:#]*\\d{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "MASK", "maskCharacter": "x", "maskLength": "SAME", "leaveCharacters": 4}
+          {
+            "strategy": "MASK",
+            "maskCharacter": "x",
+            "maskLength": "SAME",
+            "leaveCharacters": 4
+          }
         ]
       }
     ]

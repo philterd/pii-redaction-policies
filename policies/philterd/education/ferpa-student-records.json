@@ -1,5 +1,4 @@
 {
-  "name": "ferpa-student-records",
   "config": {
     "splitting": {
       "enabled": false,
@@ -10,33 +9,53 @@
   "identifiers": {
     "personsName": {
       "personsFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[STUDENT]", "conditions": "confidence > 60"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[STUDENT]",
+          "conditions": "confidence > 60"
+        }
       ]
     },
     "date": {
       "onlyValidDates": true,
       "dateFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-DATE]", "conditions": "context == \"birth\""}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-DATE]",
+          "conditions": "context == \"birth\""
+        }
       ]
     },
     "ssn": {
       "ssnFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-SSN]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-SSN]"
+        }
       ]
     },
     "phoneNumber": {
       "phoneNumberFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-PHONE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-PHONE]"
+        }
       ]
     },
     "emailAddress": {
       "emailAddressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-EMAIL]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-EMAIL]"
+        }
       ]
     },
     "address": {
       "addressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-ADDRESS]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-ADDRESS]"
+        }
       ]
     },
     "identifiers": [
@@ -45,7 +64,10 @@
         "pattern": "\\b(?:SID|STUDENT[\\s-]?ID)[\\s:#]*\\d{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[REDACTED-SID]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-SID]"
+          }
         ]
       },
       {
@@ -53,7 +75,10 @@
         "pattern": "\\b(?:LUNCH[\\s-]?ID|MEAL[\\s-]?ID)[\\s:#]*\\d{4,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[REDACTED-LUNCHID]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-LUNCHID]"
+          }
         ]
       }
     ]
