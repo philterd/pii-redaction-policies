@@ -7,8 +7,8 @@
   },
   "ignored": [],
   "identifiers": {
-    "firstName": {
-      "firstNameFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "[PERSON]",
@@ -16,31 +16,6 @@
         }
       ]
     },
-    "surname": {
-      "surnameFilterStrategies": [
-        {
-          "strategy": "REDACT",
-          "redactionFormat": "[PERSON]",
-          "condition": "confidence > 50"
-        }
-      ]
-    },
-    "pheyes": [
-      {
-        "phEyeFilterStrategies": [
-          {
-            "strategy": "REDACT",
-            "redactionFormat": "[PERSON]",
-            "condition": "confidence > 50"
-          }
-        ],
-        "phEyeConfiguration": {
-          "labels": [
-            "PERSON"
-          ]
-        }
-      }
-    ],
     "age": {
       "ageFilterStrategies": [
         {
@@ -94,7 +69,8 @@
     "zipCode": {
       "zipCodeFilterStrategy": [
         {
-          "strategy": "TRUNCATE"
+          "strategy": "TRUNCATE",
+          "truncateDigits": 3
         }
       ]
     },

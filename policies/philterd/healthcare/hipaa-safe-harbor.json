@@ -13,7 +13,7 @@
         {
           "strategy": "REDACT",
           "redactionFormat": "{{{REDACTED-%t}}}",
-          "condition": "context == \"age\" > 89"
+          "conditions": "context == \"age\" > 89"
         }
       ]
     },
@@ -69,41 +69,19 @@
     "zipCode": {
       "zipCodeFilterStrategy": [
         {
-          "strategy": "TRUNCATE"
+          "strategy": "TRUNCATE",
+          "truncateDigits": 3
         }
       ]
     },
-    "firstName": {
-      "firstNameFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "{{{REDACTED-%t}}}"
         }
       ]
     },
-    "surname": {
-      "surnameFilterStrategies": [
-        {
-          "strategy": "REDACT",
-          "redactionFormat": "{{{REDACTED-%t}}}"
-        }
-      ]
-    },
-    "pheyes": [
-      {
-        "phEyeFilterStrategies": [
-          {
-            "strategy": "REDACT",
-            "redactionFormat": "{{{REDACTED-%t}}}"
-          }
-        ],
-        "phEyeConfiguration": {
-          "labels": [
-            "PERSON"
-          ]
-        }
-      }
-    ],
     "hospital": {
       "hospitalFilterStrategies": [
         {

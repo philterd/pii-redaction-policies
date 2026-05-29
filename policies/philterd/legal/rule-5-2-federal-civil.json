@@ -21,14 +21,13 @@
       "onlyValidDates": true,
       "dateFilterStrategies": [
         {
-          "strategy": "TRUNCATE",
-          "redactionFormat": "%Y",
+          "strategy": "TRUNCATE_TO_YEAR",
           "condition": "context == \"birth\""
         }
       ]
     },
-    "firstName": {
-      "firstNameFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
           "strategy": "ABBREVIATE",
           "abbreviateFormat": "INITIALS",
@@ -36,31 +35,6 @@
         }
       ]
     },
-    "surname": {
-      "surnameFilterStrategies": [
-        {
-          "strategy": "ABBREVIATE",
-          "abbreviateFormat": "INITIALS",
-          "condition": "context == \"minor\""
-        }
-      ]
-    },
-    "pheyes": [
-      {
-        "phEyeFilterStrategies": [
-          {
-            "strategy": "ABBREVIATE",
-            "abbreviateFormat": "INITIALS",
-            "condition": "context == \"minor\""
-          }
-        ],
-        "phEyeConfiguration": {
-          "labels": [
-            "PERSON"
-          ]
-        }
-      }
-    ],
     "identifiers": [
       {
         "classification": "tin",

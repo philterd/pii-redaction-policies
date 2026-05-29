@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -17,43 +20,21 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
+      - name: Install jsonschema
         run: pip install jsonschema
+
+      - name: Fetch schema and validator from phileas
+        run: |
+          curl -fsSL -o /tmp/redaction-policy-schema.json \
+            https://raw.githubusercontent.com/philterd/phileas/main/policy-schema/redaction-policy-schema.json
+          curl -fsSL -o /tmp/validate-policy.py \
+            https://raw.githubusercontent.com/philterd/phileas/main/policy-schema/validate-policy.py
 
       - name: Run policy validation
         run: bash tests/validate.sh
 
-  validate-phisql:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out policies
-        uses: actions/checkout@v4
-
-      - name: Check out PhiSQL reference compiler
-        uses: actions/checkout@v4
-        with:
-          repository: philterd/phisql
-          path: phisql
-
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-
-      - name: Build PhiSQL reference compiler
-        run: mvn -B -q -DskipTests -f phisql/reference/pom.xml package
-
-      - name: Validate .phisql policies
+      - name: Validate policies against schema
         run: |
-          set -euo pipefail
-          mvn -q -f phisql/reference/pom.xml dependency:build-classpath \
-            -Dmdep.outputFile="$PWD/phisql-cp.txt"
-          CP="phisql/reference/target/classes:$(cat phisql-cp.txt)"
-          javac -cp "$CP" -d tests tests/PhisqlValidate.java
-          phisql_files=$(find policies -name '*.phisql' | sort)
-          if [ -z "$phisql_files" ]; then
-            echo "No .phisql files found."
-            exit 0
-          fi
-          java -cp "tests:$CP" PhisqlValidate $phisql_files
+          python3 /tmp/validate-policy.py \
+            --schema /tmp/redaction-policy-schema.json \
+            $(find policies -name '*.json' -type f)

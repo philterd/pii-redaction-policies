@@ -7,8 +7,8 @@
   },
   "ignored": [],
   "identifiers": {
-    "firstName": {
-      "firstNameFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "[PATIENT]",
@@ -16,31 +16,6 @@
         }
       ]
     },
-    "surname": {
-      "surnameFilterStrategies": [
-        {
-          "strategy": "REDACT",
-          "redactionFormat": "[PATIENT]",
-          "condition": "confidence > 60"
-        }
-      ]
-    },
-    "pheyes": [
-      {
-        "phEyeFilterStrategies": [
-          {
-            "strategy": "REDACT",
-            "redactionFormat": "[PATIENT]",
-            "condition": "confidence > 60"
-          }
-        ],
-        "phEyeConfiguration": {
-          "labels": [
-            "PERSON"
-          ]
-        }
-      }
-    ],
     "physicianName": {
       "physicianNameFilterStrategies": [
         {
@@ -54,7 +29,7 @@
       "dateFilterStrategies": [
         {
           "strategy": "SHIFT",
-          "shiftRandom": true
+          "shiftDays": 90
         }
       ]
     },

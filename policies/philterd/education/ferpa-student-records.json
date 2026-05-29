@@ -7,8 +7,8 @@
   },
   "ignored": [],
   "identifiers": {
-    "firstName": {
-      "firstNameFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "[STUDENT]",
@@ -16,31 +16,6 @@
         }
       ]
     },
-    "surname": {
-      "surnameFilterStrategies": [
-        {
-          "strategy": "REDACT",
-          "redactionFormat": "[STUDENT]",
-          "condition": "confidence > 60"
-        }
-      ]
-    },
-    "pheyes": [
-      {
-        "phEyeFilterStrategies": [
-          {
-            "strategy": "REDACT",
-            "redactionFormat": "[STUDENT]",
-            "condition": "confidence > 60"
-          }
-        ],
-        "phEyeConfiguration": {
-          "labels": [
-            "PERSON"
-          ]
-        }
-      }
-    ],
     "date": {
       "onlyValidDates": true,
       "dateFilterStrategies": [

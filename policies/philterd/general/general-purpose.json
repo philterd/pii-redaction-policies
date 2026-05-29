@@ -7,8 +7,8 @@
   },
   "ignored": [],
   "identifiers": {
-    "firstName": {
-      "firstNameFilterStrategies": [
+    "person": {
+      "phEyeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "{{{REDACTED-%t}}}",
@@ -16,31 +16,6 @@
         }
       ]
     },
-    "surname": {
-      "surnameFilterStrategies": [
-        {
-          "strategy": "REDACT",
-          "redactionFormat": "{{{REDACTED-%t}}}",
-          "condition": "confidence > 70"
-        }
-      ]
-    },
-    "pheyes": [
-      {
-        "phEyeFilterStrategies": [
-          {
-            "strategy": "REDACT",
-            "redactionFormat": "{{{REDACTED-%t}}}",
-            "condition": "confidence > 70"
-          }
-        ],
-        "phEyeConfiguration": {
-          "labels": [
-            "PERSON"
-          ]
-        }
-      }
-    ],
     "phoneNumber": {
       "phoneNumberFilterStrategies": [
         {
