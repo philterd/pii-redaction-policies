@@ -1,5 +1,4 @@
 {
-  "name": "medical-chatbot",
   "config": {
     "splitting": {
       "enabled": false,
@@ -8,77 +7,142 @@
   },
   "ignored": [],
   "identifiers": {
-    "personsName": {
-      "personsFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PERSON]", "conditions": "confidence > 50"}
+    "firstName": {
+      "firstNameFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PERSON]",
+          "condition": "confidence > 50"
+        }
       ]
     },
+    "surname": {
+      "surnameFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PERSON]",
+          "condition": "confidence > 50"
+        }
+      ]
+    },
+    "pheyes": [
+      {
+        "phEyeFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[PERSON]",
+            "condition": "confidence > 50"
+          }
+        ],
+        "phEyeConfiguration": {
+          "labels": [
+            "PERSON"
+          ]
+        }
+      }
+    ],
     "age": {
       "ageFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[AGE>89]", "conditions": "context == \"age\" > 89"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[AGE>89]",
+          "condition": "context == \"age\" > 89"
+        }
       ]
     },
     "date": {
       "onlyValidDates": true,
       "dateFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-DATE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-DATE]"
+        }
       ]
     },
     "phoneNumber": {
       "phoneNumberFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-PHONE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-PHONE]"
+        }
       ]
     },
     "emailAddress": {
       "emailAddressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-EMAIL]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-EMAIL]"
+        }
       ]
     },
     "ssn": {
       "ssnFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-SSN]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-SSN]"
+        }
       ]
     },
-    "address": {
-      "addressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-ADDRESS]"}
+    "streetAddress": {
+      "streetAddressFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-ADDRESS]"
+        }
       ]
     },
     "zipCode": {
-      "zipCodeFilterStrategies": [
-        {"strategy": "TRUNCATE", "truncateDigits": 3}
+      "zipCodeFilterStrategy": [
+        {
+          "strategy": "TRUNCATE"
+        }
       ]
     },
     "ipAddress": {
       "ipAddressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-IP]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-IP]"
+        }
       ]
     },
     "hospital": {
       "hospitalFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[FACILITY]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[FACILITY]"
+        }
       ]
     },
     "physicianName": {
       "physicianNameFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PROVIDER]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PROVIDER]"
+        }
       ]
     },
     "identifiers": [
       {
-        "id": "mrn",
+        "classification": "mrn",
         "pattern": "\\bMRN[\\s:#]*\\d{5,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[REDACTED-MRN]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-MRN]"
+          }
         ]
       },
       {
-        "id": "insurance-id",
+        "classification": "insurance-id",
         "pattern": "\\b(?:member|policy|insurance|plan)[\\s-]?(?:id|number|#)[\\s:#]*[A-Z0-9-]{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[REDACTED-INSURANCE-ID]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-INSURANCE-ID]"
+          }
         ]
       }
     ]

@@ -1,5 +1,4 @@
 {
-  "name": "glba-nppi-redaction",
   "config": {
     "splitting": {
       "enabled": false,
@@ -8,81 +7,153 @@
   },
   "ignored": [],
   "identifiers": {
-    "personsName": {
-      "personsFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[CUSTOMER]", "conditions": "confidence > 65"}
+    "firstName": {
+      "firstNameFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[CUSTOMER]",
+          "condition": "confidence > 65"
+        }
       ]
     },
+    "surname": {
+      "surnameFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[CUSTOMER]",
+          "condition": "confidence > 65"
+        }
+      ]
+    },
+    "pheyes": [
+      {
+        "phEyeFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[CUSTOMER]",
+            "condition": "confidence > 65"
+          }
+        ],
+        "phEyeConfiguration": {
+          "labels": [
+            "PERSON"
+          ]
+        }
+      }
+    ],
     "ssn": {
       "ssnFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-SSN]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-SSN]"
+        }
       ]
     },
     "creditCard": {
-      "onlyValidCreditCards": true,
+      "onlyValidCreditCardNumbers": true,
       "creditCardFilterStrategies": [
-        {"strategy": "MASK", "maskCharacter": "*", "maskLength": "SAME", "leaveCharacters": 4}
+        {
+          "strategy": "MASK",
+          "maskCharacter": "*",
+          "maskLength": "SAME",
+          "leaveCharacters": 4
+        }
       ]
     },
-    "iban": {
-      "ibanFilterStrategies": [
-        {"strategy": "MASK", "maskCharacter": "*", "maskLength": "SAME", "leaveCharacters": 4}
+    "ibanCode": {
+      "ibanCodeFilterStrategies": [
+        {
+          "strategy": "MASK",
+          "maskCharacter": "*",
+          "maskLength": "SAME",
+          "leaveCharacters": 4
+        }
       ]
     },
     "date": {
       "onlyValidDates": true,
       "dateFilterStrategies": [
-        {"strategy": "TRUNCATE", "truncateDigits": 4, "redactionFormat": "%Y", "conditions": "context == \"birth\""}
+        {
+          "strategy": "TRUNCATE",
+          "redactionFormat": "%Y",
+          "condition": "context == \"birth\""
+        }
       ]
     },
     "phoneNumber": {
       "phoneNumberFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-PHONE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-PHONE]"
+        }
       ]
     },
     "emailAddress": {
       "emailAddressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-EMAIL]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-EMAIL]"
+        }
       ]
     },
-    "address": {
-      "addressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-ADDRESS]"}
+    "streetAddress": {
+      "streetAddressFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-ADDRESS]"
+        }
       ]
     },
     "driversLicense": {
       "driversLicenseFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-LICENSE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-LICENSE]"
+        }
       ]
     },
     "passportNumber": {
       "passportNumberFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-PASSPORT]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-PASSPORT]"
+        }
       ]
     },
     "identifiers": [
       {
-        "id": "routing-number",
+        "classification": "routing-number",
         "pattern": "\\b(?:ABA|RTN|routing)[\\s:#]*\\d{9}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[REDACTED-RTN]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-RTN]"
+          }
         ]
       },
       {
-        "id": "account-number",
+        "classification": "account-number",
         "pattern": "\\b(?:account|acct)[\\s:#]*(?:number|#)?[\\s:#]*\\d{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "MASK", "maskCharacter": "*", "maskLength": "SAME", "leaveCharacters": 4}
+          {
+            "strategy": "MASK",
+            "maskCharacter": "*",
+            "maskLength": "SAME",
+            "leaveCharacters": 4
+          }
         ]
       },
       {
-        "id": "loan-number",
+        "classification": "loan-number",
         "pattern": "\\b(?:loan|mortgage|note)[\\s:#]*(?:number|#)?[\\s:#]*[A-Z0-9-]{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[REDACTED-LOAN]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-LOAN]"
+          }
         ]
       }
     ]

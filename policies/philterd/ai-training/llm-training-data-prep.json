@@ -1,5 +1,4 @@
 {
-  "name": "llm-training-data-prep",
   "config": {
     "splitting": {
       "enabled": true,
@@ -8,75 +7,143 @@
   },
   "ignored": [],
   "identifiers": {
-    "personsName": {
-      "personsFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PERSON]", "conditions": "confidence > 55"}
+    "firstName": {
+      "firstNameFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PERSON]",
+          "condition": "confidence > 55"
+        }
       ]
     },
+    "surname": {
+      "surnameFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PERSON]",
+          "condition": "confidence > 55"
+        }
+      ]
+    },
+    "pheyes": [
+      {
+        "phEyeFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[PERSON]",
+            "condition": "confidence > 55"
+          }
+        ],
+        "phEyeConfiguration": {
+          "labels": [
+            "PERSON"
+          ]
+        }
+      }
+    ],
     "phoneNumber": {
       "phoneNumberFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PHONE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PHONE]"
+        }
       ]
     },
     "emailAddress": {
       "emailAddressFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[EMAIL]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[EMAIL]"
+        }
       ]
     },
     "ssn": {
       "ssnFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[SSN]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[SSN]"
+        }
       ]
     },
     "creditCard": {
-      "onlyValidCreditCards": true,
+      "onlyValidCreditCardNumbers": true,
       "creditCardFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[CARD]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[CARD]"
+        }
       ]
     },
     "ipAddress": {
       "ipAddressFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[IP]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[IP]"
+        }
       ]
     },
     "url": {
       "urlFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[URL]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[URL]"
+        }
       ]
     },
     "passportNumber": {
       "passportNumberFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PASSPORT]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PASSPORT]"
+        }
       ]
     },
     "driversLicense": {
       "driversLicenseFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[LICENSE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[LICENSE]"
+        }
       ]
     },
-    "iban": {
-      "ibanFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[IBAN]"}
+    "ibanCode": {
+      "ibanCodeFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[IBAN]"
+        }
       ]
     },
     "physicianName": {
       "physicianNameFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PERSON]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PERSON]"
+        }
       ]
     },
     "hospital": {
       "hospitalFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[ORG]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[ORG]"
+        }
       ]
     },
     "city": {
       "cityFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[LOCATION]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[LOCATION]"
+        }
       ]
     },
-    "address": {
-      "addressFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[ADDRESS]"}
+    "streetAddress": {
+      "streetAddressFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[ADDRESS]"
+        }
       ]
     }
   }

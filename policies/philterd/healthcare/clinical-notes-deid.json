@@ -1,5 +1,4 @@
 {
-  "name": "clinical-notes-deid",
   "config": {
     "splitting": {
       "enabled": true,
@@ -8,54 +7,108 @@
   },
   "ignored": [],
   "identifiers": {
-    "personsName": {
-      "personsFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PATIENT]", "conditions": "confidence > 60"}
+    "firstName": {
+      "firstNameFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PATIENT]",
+          "condition": "confidence > 60"
+        }
       ]
     },
+    "surname": {
+      "surnameFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PATIENT]",
+          "condition": "confidence > 60"
+        }
+      ]
+    },
+    "pheyes": [
+      {
+        "phEyeFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[PATIENT]",
+            "condition": "confidence > 60"
+          }
+        ],
+        "phEyeConfiguration": {
+          "labels": [
+            "PERSON"
+          ]
+        }
+      }
+    ],
     "physicianName": {
       "physicianNameFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[PROVIDER]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PROVIDER]"
+        }
       ]
     },
     "date": {
       "onlyValidDates": true,
       "dateFilterStrategies": [
-        {"strategy": "SHIFT", "shiftDays": "RANDOM(-90,90)"}
+        {
+          "strategy": "SHIFT",
+          "shiftRandom": true
+        }
       ]
     },
     "age": {
       "ageFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[AGE>89]", "conditions": "context == \"age\" > 89"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[AGE>89]",
+          "condition": "context == \"age\" > 89"
+        }
       ]
     },
     "phoneNumber": {
       "phoneNumberFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[PHONE]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[PHONE]"
+        }
       ]
     },
     "ssn": {
       "ssnFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[SSN]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[SSN]"
+        }
       ]
     },
     "emailAddress": {
       "emailAddressFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[EMAIL]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[EMAIL]"
+        }
       ]
     },
     "hospital": {
       "hospitalFilterStrategies": [
-        {"strategy": "REPLACE", "redactionFormat": "[FACILITY]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[FACILITY]"
+        }
       ]
     },
     "identifiers": [
       {
-        "id": "mrn",
+        "classification": "mrn",
         "pattern": "\\bMRN[\\s:#]*\\d{5,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[MRN]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[MRN]"
+          }
         ]
       }
     ]

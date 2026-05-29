@@ -3,7 +3,11 @@
 # - Each .json under policies/{philterd,community}/<category>/ must parse as valid JSON
 # - Each .json must have a sibling .md
 # - Each .md must have the required frontmatter fields, including `creator`
-# - JSON schema validation (if a schema validator is available)
+# - Each .json must validate against the canonical Phileas schema in
+#   schema/policy.schema.json (enforced via tests/validate_schema.py)
+#
+# PhiSQL (.phisql) policies are validated by a separate CI job that compiles
+# them with the PhiSQL reference compiler (see .github/workflows/validate-policies.yml).
 
 set -euo pipefail
 
@@ -87,6 +91,17 @@ fi
 
 echo
 echo "Checked $checked policy file(s)."
+
+# Validate every policy JSON against the canonical Phileas schema.
+echo
+echo "Validating policies against the canonical Phileas schema..."
+if ! python3 -c "import jsonschema" >/dev/null 2>&1; then
+  echo "ERROR: the Python 'jsonschema' package is required for schema validation."
+  echo "       Install it with: pip install jsonschema"
+  errors=$((errors + 1))
+elif ! python3 "$ROOT/tests/validate_schema.py"; then
+  errors=$((errors + 1))
+fi
 
 if [ $errors -gt 0 ]; then
   echo "Validation failed with $errors error(s)."

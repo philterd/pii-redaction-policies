@@ -1,5 +1,4 @@
 {
-  "name": "pci-dss-scope-reduction",
   "config": {
     "splitting": {
       "enabled": false,
@@ -9,36 +8,55 @@
   "ignored": [],
   "identifiers": {
     "creditCard": {
-      "onlyValidCreditCards": true,
+      "onlyValidCreditCardNumbers": true,
       "creditCardFilterStrategies": [
-        {"strategy": "MASK", "maskCharacter": "*", "maskLength": "SAME", "leaveCharacters": 4}
+        {
+          "strategy": "MASK",
+          "maskCharacter": "*",
+          "maskLength": "SAME",
+          "leaveCharacters": 4
+        }
       ]
     },
-    "iban": {
-      "ibanFilterStrategies": [
-        {"strategy": "MASK", "maskCharacter": "*", "maskLength": "SAME", "leaveCharacters": 4}
+    "ibanCode": {
+      "ibanCodeFilterStrategies": [
+        {
+          "strategy": "MASK",
+          "maskCharacter": "*",
+          "maskLength": "SAME",
+          "leaveCharacters": 4
+        }
       ]
     },
     "ssn": {
       "ssnFilterStrategies": [
-        {"strategy": "REDACT", "redactionFormat": "[REDACTED-SSN]"}
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-SSN]"
+        }
       ]
     },
     "identifiers": [
       {
-        "id": "cvv",
+        "classification": "cvv",
         "pattern": "\\b(?:CVV|CVC|CVV2|CSC)[\\s:#]*\\d{3,4}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[REDACTED-CVV]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-CVV]"
+          }
         ]
       },
       {
-        "id": "card-expiration",
+        "classification": "card-expiration",
         "pattern": "\\b(?:EXP|EXPIRES?|EXPIRATION)[\\s:#]*(0[1-9]|1[0-2])[/\\-](\\d{2}|\\d{4})\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "REDACT", "redactionFormat": "[REDACTED-EXP]"}
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-EXP]"
+          }
         ]
       }
     ]

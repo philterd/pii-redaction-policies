@@ -70,10 +70,11 @@ This checks:
 - Every `.json` parses as valid JSON
 - Every `.json` has a sibling `.md`
 - Every `.md` has the required frontmatter fields
-- Every policy passes the JSON schema in `schema/policy.schema.json`
+- Every policy passes the canonical Phileas schema in `schema/policy.schema.json` (the same schema the Phileas runtime uses, so field drift like `iban` vs `ibanCode` is caught here instead of silently dropping rules at runtime)
+- Every `.phisql` policy compiles with the PhiSQL reference compiler (validated by a separate CI job)
 - Golden-file tests: if `examples/inputs/<slug>.txt` exists, the policy must produce `examples/outputs/<slug>.redacted.txt` (skipped if no input file is provided)
 
-CI runs the same checks on every PR.
+CI runs the same checks on every PR. JSON schema validation requires the `jsonschema` Python package (`pip install jsonschema`).
 
 ## Naming conventions
 

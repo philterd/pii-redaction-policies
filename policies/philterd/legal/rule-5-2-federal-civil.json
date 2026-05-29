@@ -1,5 +1,4 @@
 {
-  "name": "rule-5-2-federal-civil",
   "config": {
     "splitting": {
       "enabled": false,
@@ -10,34 +9,82 @@
   "identifiers": {
     "ssn": {
       "ssnFilterStrategies": [
-        {"strategy": "MASK", "maskCharacter": "x", "maskLength": "SAME", "leaveCharacters": 4}
+        {
+          "strategy": "MASK",
+          "maskCharacter": "x",
+          "maskLength": "SAME",
+          "leaveCharacters": 4
+        }
       ]
     },
     "date": {
       "onlyValidDates": true,
       "dateFilterStrategies": [
-        {"strategy": "TRUNCATE", "truncateDigits": 4, "redactionFormat": "%Y", "conditions": "context == \"birth\""}
+        {
+          "strategy": "TRUNCATE",
+          "redactionFormat": "%Y",
+          "condition": "context == \"birth\""
+        }
       ]
     },
-    "personsName": {
-      "personsFilterStrategies": [
-        {"strategy": "ABBREVIATE", "abbreviateFormat": "INITIALS", "conditions": "context == \"minor\""}
+    "firstName": {
+      "firstNameFilterStrategies": [
+        {
+          "strategy": "ABBREVIATE",
+          "abbreviateFormat": "INITIALS",
+          "condition": "context == \"minor\""
+        }
       ]
     },
+    "surname": {
+      "surnameFilterStrategies": [
+        {
+          "strategy": "ABBREVIATE",
+          "abbreviateFormat": "INITIALS",
+          "condition": "context == \"minor\""
+        }
+      ]
+    },
+    "pheyes": [
+      {
+        "phEyeFilterStrategies": [
+          {
+            "strategy": "ABBREVIATE",
+            "abbreviateFormat": "INITIALS",
+            "condition": "context == \"minor\""
+          }
+        ],
+        "phEyeConfiguration": {
+          "labels": [
+            "PERSON"
+          ]
+        }
+      }
+    ],
     "identifiers": [
       {
-        "id": "tin",
+        "classification": "tin",
         "pattern": "\\b\\d{2}[-\\s]?\\d{7}\\b",
         "identifierFilterStrategies": [
-          {"strategy": "MASK", "maskCharacter": "x", "maskLength": "SAME", "leaveCharacters": 4}
+          {
+            "strategy": "MASK",
+            "maskCharacter": "x",
+            "maskLength": "SAME",
+            "leaveCharacters": 4
+          }
         ]
       },
       {
-        "id": "financial-account",
+        "classification": "financial-account",
         "pattern": "\\b(?:ACCT|ACCOUNT)[\\s:#]*\\d{6,}\\b",
         "caseSensitive": false,
         "identifierFilterStrategies": [
-          {"strategy": "MASK", "maskCharacter": "x", "maskLength": "SAME", "leaveCharacters": 4}
+          {
+            "strategy": "MASK",
+            "maskCharacter": "x",
+            "maskLength": "SAME",
+            "leaveCharacters": 4
+          }
         ]
       }
     ]
