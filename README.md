@@ -1,6 +1,6 @@
 # Philterd PII Redaction Policies
 
-A curated, community-contributed library of [Philter](https://philterd.ai/philter/) and [Phileas](https://philterd.ai/phileas/) redaction policies — covering common compliance frameworks (HIPAA, PCI DSS, GLBA, FERPA, FRCP 5.2), vertical use cases (healthcare clinical notes, contact-center transcripts, AI training data), and general-purpose starting points.
+A curated, community-contributed library of [Philter](https://philterd.ai/philter/) and [Phileas](https://philterd.ai/phileas/) redaction policies — covering common compliance frameworks (HIPAA, GDPR, CCPA/CPRA, PCI DSS, GLBA, SOX, FERPA, FRCP 5.2), vertical use cases (healthcare clinical notes, contact-center transcripts, AI training data), and general-purpose starting points.
 
 Each policy is a working JSON file you can drop into a Philter or Phileas deployment. Each policy is paired with a sidecar `.md` file that documents what it does, when to use it, what's tunable, and a sample input/output pair.
 
@@ -18,13 +18,13 @@ A searchable, browsable version of this library is rendered on **[philterd.ai/po
 policies/
 ├── philterd/               Policies maintained by the Philterd team
 │   ├── healthcare/         HIPAA Safe Harbor, clinical notes, medical chatbot
-│   ├── finance/            PCI DSS, GLBA NPPI
+│   ├── finance/            PCI DSS, GLBA NPPI, SOX financial records
 │   ├── legal/              Bankruptcy Rule 9037, e-discovery
 │   ├── government/         FOIA preparation, FedRAMP-adjacent
 │   ├── education/          FERPA, student records
 │   ├── ai-training/        LLM fine-tuning data prep, RAG ingestion
 │   ├── contact-center/     Call-recording transcripts, PCI scope reduction
-│   └── general/            General-purpose starting points
+│   └── general/            General-purpose starting points, GDPR, CCPA/CPRA
 └── community/              Policies contributed by the community
     └── <category>/         Same per-category layout
 ```

@@ -1,0 +1,130 @@
+{
+  "config": {
+    "splitting": {
+      "enabled": false,
+      "threshold": 4000
+    }
+  },
+  "ignored": [],
+  "identifiers": {
+    "person": {
+      "phEyeFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[INDIVIDUAL]",
+          "condition": "confidence > 65"
+        }
+      ]
+    },
+    "ssn": {
+      "ssnFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-SSN]"
+        }
+      ]
+    },
+    "emailAddress": {
+      "emailAddressFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-EMAIL]"
+        }
+      ]
+    },
+    "phoneNumber": {
+      "phoneNumberFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-PHONE]"
+        }
+      ]
+    },
+    "creditCard": {
+      "onlyValidCreditCardNumbers": true,
+      "creditCardFilterStrategies": [
+        {
+          "strategy": "MASK",
+          "maskCharacter": "*",
+          "maskLength": "SAME",
+          "leaveCharacters": 4
+        }
+      ]
+    },
+    "ibanCode": {
+      "ibanCodeFilterStrategies": [
+        {
+          "strategy": "MASK",
+          "maskCharacter": "*",
+          "maskLength": "SAME",
+          "leaveCharacters": 4
+        }
+      ]
+    },
+    "bankRoutingNumber": {
+      "bankRoutingNumberFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "[REDACTED-RTN]"
+        }
+      ]
+    },
+    "date": {
+      "onlyValidDates": true,
+      "dateFilterStrategies": [
+        {
+          "strategy": "TRUNCATE_TO_YEAR",
+          "condition": "context == \"birth\""
+        }
+      ]
+    },
+    "identifiers": [
+      {
+        "classification": "account-number",
+        "pattern": "\\b(?:account|acct)[\\s:#]*(?:number|#)?[\\s:#]*\\d{6,}\\b",
+        "caseSensitive": false,
+        "identifierFilterStrategies": [
+          {
+            "strategy": "MASK",
+            "maskCharacter": "*",
+            "maskLength": "SAME",
+            "leaveCharacters": 4
+          }
+        ]
+      },
+      {
+        "classification": "gl-account",
+        "pattern": "\\b(?:GL|G/L|general ledger)[\\s:#]*(?:account|acct|#)?[\\s:#]*\\d{4,}\\b",
+        "caseSensitive": false,
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-GL]"
+          }
+        ]
+      },
+      {
+        "classification": "ein",
+        "pattern": "\\b(?:EIN|employer identification|tax id|TIN)[\\s:#]*\\d{2}-?\\d{7}\\b",
+        "caseSensitive": false,
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-EIN]"
+          }
+        ]
+      },
+      {
+        "classification": "invoice-number",
+        "pattern": "\\b(?:invoice|inv)[\\s:#]*(?:number|no|#)?[\\s:#]*[A-Z0-9-]{4,}\\b",
+        "caseSensitive": false,
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-INVOICE]"
+          }
+        ]
+      }
+    ]
+  }
+}
