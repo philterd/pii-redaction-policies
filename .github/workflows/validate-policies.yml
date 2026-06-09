@@ -23,18 +23,39 @@ jobs:
       - name: Install jsonschema
         run: pip install jsonschema
 
-      - name: Fetch schema and validator from phileas
+      - name: Fetch schema
         run: |
           curl -fsSL -o /tmp/redaction-policy-schema.json \
-            https://raw.githubusercontent.com/philterd/phileas/main/policy-schema/redaction-policy-schema.json
-          curl -fsSL -o /tmp/validate-policy.py \
-            https://raw.githubusercontent.com/philterd/phileas/main/policy-schema/validate-policy.py
+            https://philterd.ai/schemas/redaction-policy/1.0.0/schema.json
 
       - name: Run policy validation
         run: bash tests/validate.sh
 
       - name: Validate policies against schema
         run: |
-          python3 /tmp/validate-policy.py \
-            --schema /tmp/redaction-policy-schema.json \
-            $(find policies -name '*.json' -type f)
+          python3 - <<'PY'
+          import glob, json, sys
+          from jsonschema import Draft202012Validator
+
+          with open("/tmp/redaction-policy-schema.json") as f:
+              validator = Draft202012Validator(json.load(f))
+
+          failures = 0
+          policies = sorted(glob.glob("policies/**/*.json", recursive=True))
+          for path in policies:
+              with open(path) as f:
+                  policy = json.load(f)
+              errors = sorted(validator.iter_errors(policy), key=str)
+              if errors:
+                  failures += 1
+                  print(f"FAIL {path}")
+                  for error in errors:
+                      location = "/".join(str(p) for p in error.path) or "<root>"
+                      print(f"  {location}: {error.message}")
+
+          print(f"\nChecked {len(policies)} policy file(s).")
+          if failures:
+              print(f"Schema validation failed for {failures} file(s).")
+              sys.exit(1)
+          print("All policies conform to the schema.")
+          PY
