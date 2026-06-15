@@ -1,0 +1,54 @@
+{
+  "config": {
+    "splitting": {
+      "enabled": false,
+      "threshold": 4000
+    }
+  },
+  "ignored": [],
+  "identifiers": {
+    "identifiers": [
+      {
+        "classification": "french-nir",
+        "pattern": "\\b[12]\\d{4}(?:\\d{2}|2[AB])\\d{8}\\b",
+        "caseSensitive": false,
+        "validator": {
+          "name": "mod97",
+          "params": {
+            "variant": "nir"
+          }
+        },
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-FRENCH-NIR]"
+          }
+        ]
+      },
+      {
+        "classification": "french-siret",
+        "pattern": "\\b\\d{14}\\b",
+        "caseSensitive": false,
+        "validator": "luhn",
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-FRENCH-SIRET]"
+          }
+        ]
+      },
+      {
+        "classification": "french-siren",
+        "pattern": "\\b\\d{9}\\b",
+        "caseSensitive": false,
+        "validator": "luhn",
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-FRENCH-SIREN]"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "config": {
+    "splitting": {
+      "enabled": false,
+      "threshold": 4000
+    }
+  },
+  "ignored": [],
+  "identifiers": {
+    "identifiers": [
+      {
+        "classification": "spanish-dni",
+        "pattern": "\\b\\d{8}[A-Za-z]\\b",
+        "caseSensitive": false,
+        "validator": "mod23-letter",
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-SPANISH-DNI]"
+          }
+        ]
+      },
+      {
+        "classification": "spanish-nie",
+        "pattern": "\\b[XYZxyz]\\d{7}[A-Za-z]\\b",
+        "caseSensitive": false,
+        "validator": "mod23-letter",
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-SPANISH-NIE]"
+          }
+        ]
+      },
+      {
+        "classification": "spanish-cif",
+        "pattern": "\\b[A-HJ-NP-SUVWa-hj-np-suvw]\\d{7}[0-9A-Ja-j]\\b",
+        "caseSensitive": false,
+        "validator": "es-cif",
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-SPANISH-CIF]"
+          }
+        ]
+      }
+    ]
+  }
+}

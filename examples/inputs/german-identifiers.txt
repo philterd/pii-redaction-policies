@@ -1,0 +1,4 @@
+German records for onboarding.
+Steuer-ID (IdNr): 86095742719
+Ausweisnummer (Personalausweis): T220001293
+Invalid Steuer-ID, bad checksum: 86095742718

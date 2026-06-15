@@ -1,0 +1,5 @@
+Wire transfer details.
+SWIFT/BIC 8-char: [REDACTED-SWIFT-BIC]
+SWIFT/BIC 11-char: [REDACTED-SWIFT-BIC]
+BIC for the US bank: [REDACTED-SWIFT-BIC]
+Invalid BIC, unassigned country: DEUTZZFF

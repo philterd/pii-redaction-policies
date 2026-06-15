@@ -1,0 +1,37 @@
+{
+  "config": {
+    "splitting": {
+      "enabled": false,
+      "threshold": 4000
+    }
+  },
+  "ignored": [],
+  "identifiers": {
+    "identifiers": [
+      {
+        "classification": "german-steuer-id",
+        "pattern": "\\b\\d{11}\\b",
+        "caseSensitive": false,
+        "validator": "de-steuerid",
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-GERMAN-STEUER-ID]"
+          }
+        ]
+      },
+      {
+        "classification": "german-personalausweis",
+        "pattern": "\\b[A-Z]\\d{9}\\b",
+        "caseSensitive": false,
+        "validator": "de-personalausweis",
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-GERMAN-PERSONALAUSWEIS]"
+          }
+        ]
+      }
+    ]
+  }
+}

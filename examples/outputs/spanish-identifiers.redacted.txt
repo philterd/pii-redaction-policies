@@ -1,0 +1,5 @@
+Spanish customer records.
+DNI: [REDACTED-SPANISH-DNI]
+NIE: [REDACTED-SPANISH-NIE]
+CIF: [REDACTED-SPANISH-CIF]
+Invalid DNI, wrong control letter: 12345678A

@@ -1,0 +1,5 @@
+Wire transfer details.
+SWIFT/BIC 8-char: DEUTDEFF
+SWIFT/BIC 11-char: DEUTDEFF500
+BIC for the US bank: BOFAUS3N
+Invalid BIC, unassigned country: DEUTZZFF

@@ -1,0 +1,4 @@
+German records for onboarding.
+Steuer-ID (IdNr): [REDACTED-GERMAN-STEUER-ID]
+Ausweisnummer (Personalausweis): [REDACTED-GERMAN-PERSONALAUSWEIS]
+Invalid Steuer-ID, bad checksum: 86095742718

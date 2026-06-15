@@ -1,0 +1,5 @@
+French business and social records.
+NIR (n de securite sociale): [REDACTED-FRENCH-NIR]
+SIREN: [REDACTED-FRENCH-SIREN]
+SIRET: [REDACTED-FRENCH-SIRET]
+Invalid SIREN, bad checksum: 732829321

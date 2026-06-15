@@ -1,0 +1,5 @@
+Brazilian customer records.
+CPF: [REDACTED-BR-CPF]
+CNPJ: [REDACTED-BR-CNPJ]
+CPF unformatted: [REDACTED-BR-CPF]
+Invalid CPF, bad checksum: 52998224724

@@ -1,0 +1,5 @@
+French business and social records.
+NIR (n de securite sociale): 255081416802538
+SIREN: 732829320
+SIRET: 73282932000074
+Invalid SIREN, bad checksum: 732829321

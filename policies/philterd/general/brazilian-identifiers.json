@@ -1,0 +1,47 @@
+{
+  "config": {
+    "splitting": {
+      "enabled": false,
+      "threshold": 4000
+    }
+  },
+  "ignored": [],
+  "identifiers": {
+    "identifiers": [
+      {
+        "classification": "br-cpf",
+        "pattern": "\\b\\d{3}\\.?\\d{3}\\.?\\d{3}-?\\d{2}\\b",
+        "caseSensitive": false,
+        "validator": {
+          "name": "mod11",
+          "params": {
+            "variant": "cpf"
+          }
+        },
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-BR-CPF]"
+          }
+        ]
+      },
+      {
+        "classification": "br-cnpj",
+        "pattern": "\\b\\d{2}\\.?\\d{3}\\.?\\d{3}/?\\d{4}-?\\d{2}\\b",
+        "caseSensitive": false,
+        "validator": {
+          "name": "mod11",
+          "params": {
+            "variant": "cnpj"
+          }
+        },
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-BR-CNPJ]"
+          }
+        ]
+      }
+    ]
+  }
+}

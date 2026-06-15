@@ -1,0 +1,5 @@
+Spanish customer records.
+DNI: 12345678Z
+NIE: X1234567L
+CIF: A58818501
+Invalid DNI, wrong control letter: 12345678A

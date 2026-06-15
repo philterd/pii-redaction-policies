@@ -1,0 +1,5 @@
+Brazilian customer records.
+CPF: 529.982.247-25
+CNPJ: 11.222.333/0001-81
+CPF unformatted: 52998224725
+Invalid CPF, bad checksum: 52998224724
