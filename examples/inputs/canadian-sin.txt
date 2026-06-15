@@ -1,0 +1,8 @@
+Employee onboarding record.
+
+SIN (formatted): 046 454 286
+SIN (hyphenated): 046-454-286
+SIN (unformatted): 046454286
+
+Reference number that looks like a SIN but fails the checksum: 123 456 789
+Contact phone: (416) 555-0142

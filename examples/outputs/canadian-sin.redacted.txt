@@ -1,0 +1,8 @@
+Employee onboarding record.
+
+SIN (formatted): [REDACTED-CANADA-SIN]
+SIN (hyphenated): [REDACTED-CANADA-SIN]
+SIN (unformatted): [REDACTED-CANADA-SIN]
+
+Reference number that looks like a SIN but fails the checksum: 123 456 789
+Contact phone: (416) 555-0142

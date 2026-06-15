@@ -26,7 +26,7 @@ jobs:
       - name: Fetch schema
         run: |
           curl -fsSL -o /tmp/redaction-policy-schema.json \
-            https://philterd.ai/schemas/redaction-policy/1.0.0/schema.json
+            https://philterd.ai/schemas/redaction-policy/1.1.0/schema.json
 
       - name: Run policy validation
         run: bash tests/validate.sh

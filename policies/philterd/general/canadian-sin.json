@@ -1,0 +1,25 @@
+{
+  "config": {
+    "splitting": {
+      "enabled": false,
+      "threshold": 4000
+    }
+  },
+  "ignored": [],
+  "identifiers": {
+    "identifiers": [
+      {
+        "classification": "canada-sin",
+        "pattern": "\\b\\d{3}[ -]?\\d{3}[ -]?\\d{3}\\b",
+        "caseSensitive": false,
+        "validator": "luhn",
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[REDACTED-CANADA-SIN]"
+          }
+        ]
+      }
+    ]
+  }
+}
