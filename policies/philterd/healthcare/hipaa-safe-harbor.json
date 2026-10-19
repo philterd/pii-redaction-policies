@@ -12,8 +12,7 @@
       "ageFilterStrategies": [
         {
           "strategy": "REDACT",
-          "redactionFormat": "{{{REDACTED-%t}}}",
-          "conditions": "context == \"age\" > 89"
+          "redactionFormat": "{{{REDACTED-%t}}}"
         }
       ]
     },
@@ -66,19 +65,139 @@
         }
       ]
     },
-    "zipCode": {
-      "zipCodeFilterStrategy": [
-        {
-          "strategy": "TRUNCATE",
-          "truncateDigits": 3
-        }
-      ]
-    },
-    "person": {
-      "phEyeFilterStrategies": [
+    "macAddress": {
+      "macAddressFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "{{{REDACTED-%t}}}"
+        }
+      ]
+    },
+    "vin": {
+      "vinFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}"
+        }
+      ]
+    },
+    "driversLicense": {
+      "driversLicenseFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}"
+        }
+      ]
+    },
+    "passportNumber": {
+      "passportNumberFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}"
+        }
+      ]
+    },
+    "zipCode": {
+      "priority": 10,
+      "zipCodeFilterStrategy": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"036\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"059\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"063\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"102\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"203\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"205\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"369\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"556\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"692\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"790\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"821\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"823\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"830\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"831\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"878\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"879\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"884\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"890\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}",
+          "condition": "token startswith \"893\""
+        },
+        {
+          "strategy": "TRUNCATE",
+          "truncateLeaveCharacters": 3
         }
       ]
     },
@@ -106,6 +225,15 @@
         }
       ]
     },
+    "streetAddress": {
+      "priority": 10,
+      "streetAddressFilterStrategies": [
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-%t}}}"
+        }
+      ]
+    },
     "identifiers": [
       {
         "classification": "mrn",
@@ -126,6 +254,16 @@
           {
             "strategy": "REDACT",
             "redactionFormat": "{{{REDACTED-ACCOUNT}}}"
+          }
+        ]
+      }
+    ],
+    "pheyes": [
+      {
+        "phEyeFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "{{{REDACTED-%t}}}"
           }
         ]
       }

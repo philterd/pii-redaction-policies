@@ -16,7 +16,7 @@ exampleOutput: "Customer [CUSTOMER] (SSN [REDACTED-SSN], DOB 1980) opened accoun
 
 ## What this policy does
 
-Removes [Nonpublic Personal Information (NPPI)](https://philterd.ai/guides/what-is-nppi-nonpublic-personal-information/) &mdash; the category of customer financial data protected by the [Gramm-Leach-Bliley Act](https://www.law.cornell.edu/uscode/text/15/chapter-94) (GLBA) &mdash; from financial-services records.
+Designed to redact [Nonpublic Personal Information (NPPI)](https://philterd.ai/guides/what-is-nppi-nonpublic-personal-information/), the category of customer financial data protected by the [Gramm-Leach-Bliley Act](https://www.law.cornell.edu/uscode/text/15/chapter-94) (GLBA), from financial-services records.
 
 NPPI is **broader than PCI DSS scope**. PCI focuses specifically on cardholder data; GLBA covers any personally identifiable financial information a financial institution obtains in connection with providing a financial service:
 
@@ -28,18 +28,18 @@ NPPI is **broader than PCI DSS scope**. PCI focuses specifically on cardholder d
 
 This policy targets the identifier fields:
 
-- **Customer names** &mdash; redacted to `[CUSTOMER]` (confidence-gated)
-- **SSNs** &mdash; fully redacted
-- **Credit card numbers** &mdash; masked to last 4 visible
-- **IBANs** &mdash; masked to last 4
-- **Birthdates** &mdash; truncated to year only when context indicates a birth date
-- **Phone, email, address** &mdash; redacted
-- **Driver's license, passport numbers** &mdash; redacted
-- **Bank routing numbers (ABA RTNs)** &mdash; redacted
-- **Account numbers** &mdash; masked to last 4 visible
-- **Loan / mortgage / note numbers** &mdash; redacted
+- **Customer names:** redacted to `[CUSTOMER]` (confidence-gated)
+- **SSNs:** fully redacted
+- **Credit card numbers:** masked to last 4 visible
+- **IBANs:** masked to last 4
+- **Birthdates:** truncated to year only when context indicates a birth date
+- **Phone, email, address:** redacted
+- **Driver's license, passport numbers:** redacted
+- **Bank routing numbers (ABA RTNs):** redacted
+- **Account numbers:** masked to last 4 visible
+- **Loan / mortgage / note numbers:** redacted
 
-It preserves transaction amounts, dates of transactions (non-birth), and analytical fields by default &mdash; these are usually the operational reason the records are being processed in the first place.
+It preserves transaction amounts, dates of transactions (non-birth), and analytical fields by default. These are usually the operational reason the records are being processed in the first place.
 
 ## When to use this
 
@@ -51,14 +51,14 @@ It preserves transaction amounts, dates of transactions (non-birth), and analyti
 
 ## When to customize
 
-- **Customer name handling.** Default redacts names with `[CUSTOMER]` tokens. For internal use cases where the customer name is operationally needed (e.g., case management, dispute resolution), preserve names by removing the `personsName` entry &mdash; or build a parallel "internal-only" variant.
+- **Customer name handling.** Default redacts names with `[CUSTOMER]` tokens. For internal use cases where the customer name is operationally needed (e.g., case management, dispute resolution), preserve names by removing the `personsName` entry, or build a parallel "internal-only" variant.
 - **Date of birth.** Default truncates to year only when context indicates a birth date. For research use cases needing age-band analysis, year is enough. For pure de-identification, switch to full REDACT.
 - **Address granularity.** Default fully redacts addresses. For analytics where geographic region matters, use a REPLACE strategy with `[STATE]` or `[REGION]` (Philter's `state` and custom identifiers can help here).
-- **Account / routing / loan number formats.** Defaults are generic. Replace with your core banking system's actual patterns &mdash; especially loan numbers, which vary widely (mortgages, auto loans, HELOCs, commercial loans often have different format conventions).
-- **Transaction amounts.** Not redacted by default &mdash; they're analytically valuable and aren't NPPI on their own. For datasets where customer-amount linkability is the concern, add an `identifier` rule for currency patterns.
+- **Account / routing / loan number formats.** Defaults are generic. Replace with your core banking system's actual patterns, especially loan numbers, which vary widely (mortgages, auto loans, HELOCs, commercial loans often have different format conventions).
+- **Transaction amounts.** Not redacted by default: they're analytically valuable and aren't NPPI on their own. For datasets where customer-amount linkability is the concern, add an `identifier` rule for currency patterns.
 - **Wealth-management records.** Investment holdings and balances can be NPPI. If your records include them, decide whether the analytical purpose needs them; if not, add custom redaction.
 
-## GLBA vs PCI DSS &mdash; pick the right policy
+## GLBA vs PCI DSS: pick the right policy
 
 These regimes cover overlapping but distinct data:
 
@@ -73,9 +73,9 @@ In practice, most financial institutions need both. Use the PCI policy for syste
 
 ## Compliance notes
 
-- **15 USC 6801-6809** &mdash; the GLBA statute
-- **16 CFR Part 314** &mdash; the FTC's Safeguards Rule (substantially updated 2022) requires financial institutions to maintain a written Information Security Program with reasonable safeguards for customer information
-- **16 CFR Part 313** &mdash; the Privacy Rule requires annual privacy notices and opt-out for certain disclosures of NPPI to non-affiliated third parties
+- **15 USC 6801-6809:** the GLBA statute
+- **16 CFR Part 314:** the FTC's Safeguards Rule (substantially updated 2022) requires financial institutions to maintain a written Information Security Program with reasonable safeguards for customer information
+- **16 CFR Part 313:** the Privacy Rule requires annual privacy notices and opt-out for certain disclosures of NPPI to non-affiliated third parties
 - **State financial-privacy laws** may impose additional or stricter requirements:
   - California (CCPA / CPRA, plus the California Financial Information Privacy Act)
   - Nevada (NRS Chapter 603A)
@@ -91,4 +91,4 @@ In practice, most financial institutions need both. Use the PCI policy for syste
 - [FTC Safeguards Rule (16 CFR Part 314)](https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-314)
 - [FTC Privacy Rule (16 CFR Part 313)](https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-313)
 - [FTC GLBA Compliance Guidance](https://www.ftc.gov/business-guidance/privacy-security/gramm-leach-bliley-act)
-- [Companion blueprint &mdash; PCI DSS and GLBA pipeline patterns](https://philterd.ai/blog/redaction-for-financial-services-pci-dss-glba-real-world-pipelines/)
+- [Companion blueprint: PCI DSS and GLBA pipeline patterns](https://philterd.ai/blog/redaction-for-financial-services-pci-dss-glba-real-world-pipelines/)
