@@ -16,7 +16,7 @@ exampleOutput: "Customer [CUSTOMER] (SSN [REDACTED-SSN], DOB 1980) opened accoun
 
 ## What this policy does
 
-Removes Nonpublic Personal Information (NPPI) &mdash; the category of customer financial data protected by the [Gramm-Leach-Bliley Act](https://www.law.cornell.edu/uscode/text/15/chapter-94) (GLBA) &mdash; from financial-services records.
+Removes [Nonpublic Personal Information (NPPI)](https://philterd.ai/guides/what-is-nppi-nonpublic-personal-information/) &mdash; the category of customer financial data protected by the [Gramm-Leach-Bliley Act](https://www.law.cornell.edu/uscode/text/15/chapter-94) (GLBA) &mdash; from financial-services records.
 
 NPPI is **broader than PCI DSS scope**. PCI focuses specifically on cardholder data; GLBA covers any personally identifiable financial information a financial institution obtains in connection with providing a financial service:
 

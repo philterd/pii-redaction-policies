@@ -8,7 +8,7 @@ creator: "philterd"
 version: "1.0.0"
 updated: "2026-05-18"
 philterCompatibility: ">=3.0.0"
-useCase: "Remove all 18 HIPAA Safe Harbor identifiers from clinical text per 45 CFR 164.514(b)(2)."
+useCase: "A starting point for HIPAA Safe Harbor de-identification of clinical text per 45 CFR 164.514(b)(2)."
 entities: ["NAME", "AGE", "DATE", "PHONE", "EMAIL", "SSN", "MRN", "ACCOUNT", "URL", "IP", "ZIP", "HOSPITAL", "CITY", "COUNTY"]
 exampleInput: "Patient John Smith (DOB 1985-04-12, MRN 47291) was seen at Mercy Hospital on 2025-03-14. Call (555) 123-4567 with questions."
 exampleOutput: "Patient {{{REDACTED-name}}} (DOB {{{REDACTED-date}}}, {{{REDACTED-MRN}}}) was seen at {{{REDACTED-hospital}}} on {{{REDACTED-date}}}. Call {{{REDACTED-phone-number}}} with questions."
@@ -16,7 +16,7 @@ exampleOutput: "Patient {{{REDACTED-name}}} (DOB {{{REDACTED-date}}}, {{{REDACTE
 
 ## What this policy does
 
-Removes the 18 protected health identifiers enumerated under the HIPAA Safe Harbor method ([45 CFR 164.514(b)(2)](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-E/section-164.514#p-164.514(b)(2))):
+Designed to redact the text-based identifiers enumerated under the HIPAA Safe Harbor method ([45 CFR 164.514(b)(2)](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-E/section-164.514#p-164.514(b)(2))). Some require a custom identifier for your deployment, as the table below shows:
 
 | # | Identifier | How this policy handles it |
 |---|---|---|
