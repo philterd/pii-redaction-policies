@@ -27,6 +27,12 @@
       ]
     },
     "person": {
+      "phEyeConfiguration": {
+        "modelPath": "ph-eye-pii-en-small",
+        "labels": [
+          "name"
+        ]
+      },
       "phEyeFilterStrategies": [
         {
           "strategy": "ABBREVIATE",
@@ -40,7 +46,12 @@
         {
           "strategy": "REDACT",
           "redactionFormat": "{{{REDACTED-phone-number}}}",
-          "condition": "context == \"witness\" or context == \"victim\""
+          "condition": "context == \"witness\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-phone-number}}}",
+          "condition": "context == \"victim\""
         }
       ]
     },
@@ -59,7 +70,12 @@
         {
           "strategy": "REDACT",
           "redactionFormat": "{{{REDACTED-address}}}",
-          "condition": "context == \"witness\" or context == \"victim\""
+          "condition": "context == \"witness\""
+        },
+        {
+          "strategy": "REDACT",
+          "redactionFormat": "{{{REDACTED-address}}}",
+          "condition": "context == \"victim\""
         }
       ]
     },

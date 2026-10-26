@@ -5,9 +5,9 @@ category: "legal"
 tags: ["FRBP 9037", "bankruptcy", "court filings", "privacy", "PII"]
 author: "Philterd"
 creator: "philterd"
-version: "1.0.0"
-updated: "2026-05-18"
-philterCompatibility: ">=3.0.0"
+version: "2.0.0"
+updated: "2026-10-26"
+philterCompatibility: ">=4.0.0"
 useCase: "Redact bankruptcy court filings per FRBP 9037 — last 4 of SSN/TIN/account, year-only of birthdates, minors' names to initials."
 entities: ["SSN", "TIN", "ACCOUNT", "BIRTHDATE", "MINOR_NAME"]
 exampleInput: "Debtor Jane Doe (SSN 123-45-6789, born 1985-04-12) for account 1234567890. Minor child: Charles Doe."
@@ -60,3 +60,7 @@ The same rule (FRBP 9037) applies regardless of which chapter (7, 11, 12, 13) th
 - [FRBP 9037 — Privacy Protection For Filings Made with the Court](https://www.law.cornell.edu/rules/frbp/rule_9037)
 - [FRCP 5.2 — Privacy Protection For Filings Made with the Court (civil)](https://www.law.cornell.edu/rules/frcp/rule_5.2)
 - [Judiciary Privacy Policy and Public Access to Electronic Case Files](https://www.uscourts.gov/rules-policies/judiciary-policies/privacy-policy-electronic-case-files)
+
+## Using this policy with Phileas
+
+The name filter names `ph-eye-pii-en-small`, the model bundled with Philter 4.0. With Phileas, set its `modelPath` to the directory of a downloaded copy of the model, [philterd/ph-eye-pii-en-small](https://huggingface.co/philterd/ph-eye-pii-en-small).

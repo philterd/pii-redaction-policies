@@ -46,16 +46,26 @@ For each policy, two files live in the same directory:
 # Download the policy
 curl -O https://raw.githubusercontent.com/philterd/pii-redaction-policies/main/policies/philterd/healthcare/hipaa-safe-harbor.json
 
-# Upload to your Philter instance
-curl -X POST http://localhost:8080/api/policies \
+# Upload it to Philter as hipaa-safe-harbor
+curl -sk -X POST "https://localhost:8080/api/policies?name=hipaa-safe-harbor" \
+     -H "Authorization: Bearer $PHILTER_API_KEY" \
      -H "Content-Type: application/json" \
      --data @hipaa-safe-harbor.json
 
-# Redact text using the policy
-curl http://localhost:8080/api/filter?p=hipaa-safe-harbor \
-     --data "Patient John Smith was discharged on 2025-03-14." \
-     -H "Content-Type: text/plain"
+# Redact text with it
+curl -sk "https://localhost:8080/api/filter?p=hipaa-safe-harbor" \
+     -H "Authorization: Bearer $PHILTER_API_KEY" \
+     -H "Content-Type: text/plain" \
+     --data-binary "Patient John Smith was discharged on 2025-03-14."
 ```
+
+Output:
+
+```
+Patient {{{REDACTED-name}}} was discharged on {{{REDACTED-date}}}.
+```
+
+These commands are for Philter 4.0. `PHILTER_API_KEY` is a Philter API key, and Philter serves HTTPS with a self-signed certificate until you replace it, hence `-k`. The [Philter quick start](https://philterd.ai/dev/start/) shows how to start Philter and get a key.
 
 ### With Phileas (embedded)
 

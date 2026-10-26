@@ -8,11 +8,17 @@
   "ignored": [],
   "identifiers": {
     "person": {
+      "phEyeConfiguration": {
+        "modelPath": "ph-eye-pii-en-small",
+        "labels": [
+          "name"
+        ]
+      },
       "phEyeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "[PATIENT]",
-          "condition": "confidence > 60"
+          "condition": "confidence > 0.60"
         }
       ]
     },
@@ -30,15 +36,6 @@
         {
           "strategy": "SHIFT",
           "shiftDays": 90
-        }
-      ]
-    },
-    "age": {
-      "ageFilterStrategies": [
-        {
-          "strategy": "REDACT",
-          "redactionFormat": "[AGE>89]",
-          "condition": "context == \"age\" > 89"
         }
       ]
     },
@@ -83,6 +80,17 @@
           {
             "strategy": "REDACT",
             "redactionFormat": "[MRN]"
+          }
+        ]
+      },
+      {
+        "classification": "age-over-89",
+        "pattern": "\\b(?:9\\d|1[0-4]\\d)(?=[\\s-]*(?:years?|yrs?|y\\.?o\\.?)(?:\\b|$))",
+        "caseSensitive": false,
+        "identifierFilterStrategies": [
+          {
+            "strategy": "REDACT",
+            "redactionFormat": "[AGE>89]"
           }
         ]
       }

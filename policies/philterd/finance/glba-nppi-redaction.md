@@ -5,9 +5,9 @@ category: "finance"
 tags: ["GLBA", "NPPI", "financial privacy", "Safeguards Rule", "15 USC 6801", "banking"]
 author: "Philterd"
 creator: "philterd"
-version: "1.0.0"
-updated: "2026-05-18"
-philterCompatibility: ">=3.0.0"
+version: "2.0.0"
+updated: "2026-10-26"
+philterCompatibility: ">=4.0.0"
 useCase: "Redact Nonpublic Personal Information (NPPI) from financial customer records under the Gramm-Leach-Bliley Act (15 USC 6801-6809)."
 entities: ["CUSTOMER", "SSN", "CREDIT_CARD", "IBAN", "DATE", "PHONE", "EMAIL", "ADDRESS", "LICENSE", "PASSPORT", "RTN", "ACCOUNT", "LOAN"]
 exampleInput: "Customer Robert Chen (SSN 123-45-6789, DOB 1980-06-15) opened account 1234567890 with routing 021000021. Mortgage MTG-2024-887." 
@@ -92,3 +92,7 @@ In practice, most financial institutions need both. Use the PCI policy for syste
 - [FTC Privacy Rule (16 CFR Part 313)](https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-313)
 - [FTC GLBA Compliance Guidance](https://www.ftc.gov/business-guidance/privacy-security/gramm-leach-bliley-act)
 - [Companion blueprint: PCI DSS and GLBA pipeline patterns](https://philterd.ai/blog/redaction-for-financial-services-pci-dss-glba-real-world-pipelines/)
+
+## Using this policy with Phileas
+
+The name filter names `ph-eye-pii-en-small`, the model bundled with Philter 4.0. With Phileas, set its `modelPath` to the directory of a downloaded copy of the model, [philterd/ph-eye-pii-en-small](https://huggingface.co/philterd/ph-eye-pii-en-small).

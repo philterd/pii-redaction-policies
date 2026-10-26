@@ -27,6 +27,12 @@
       ]
     },
     "person": {
+      "phEyeConfiguration": {
+        "modelPath": "ph-eye-pii-en-small",
+        "labels": [
+          "name"
+        ]
+      },
       "phEyeFilterStrategies": [
         {
           "strategy": "ABBREVIATE",

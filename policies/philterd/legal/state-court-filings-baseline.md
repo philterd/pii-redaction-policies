@@ -5,9 +5,9 @@ category: "legal"
 tags: ["state court", "court filings", "privacy", "PII", "baseline"]
 author: "Philterd"
 creator: "philterd"
-version: "1.0.0"
-updated: "2026-05-22"
-philterCompatibility: ">=3.0.0"
+version: "2.0.0"
+updated: "2026-10-26"
+philterCompatibility: ">=4.0.0"
 useCase: "A starting policy for state-court PII redaction — covers the most-common state requirements; tune for your specific jurisdiction."
 entities: ["SSN", "TIN", "ACCOUNT", "BIRTHDATE", "MINOR_NAME", "DRIVERS_LICENSE", "WITNESS_ADDRESS", "WITNESS_PHONE"]
 exampleInput: "Plaintiff Mary Roe (DL D1234567, SSN 999-88-7777, born 1978-11-03). Witness John Q. Smith resides at 4521 Maple Avenue and can be reached at (555) 234-9876. Minor child: Alex Roe. Account 9876543210."
@@ -68,3 +68,7 @@ State-court PII rules vary across at least these axes:
 - [National Center for State Courts — Privacy and Access to Court Records](https://www.ncsc.org/topics/access-and-fairness/privacy-public-access-to-court-records/state-links)
 - [FRCP 5.2 — Privacy Protection For Filings Made with the Court (federal civil baseline that many states track)](https://www.law.cornell.edu/rules/frcp/rule_5.2)
 - For state-specific rules, consult the court's rules of civil procedure and any local rules of the specific court of filing.
+
+## Using this policy with Phileas
+
+The name filter names `ph-eye-pii-en-small`, the model bundled with Philter 4.0. With Phileas, set its `modelPath` to the directory of a downloaded copy of the model, [philterd/ph-eye-pii-en-small](https://huggingface.co/philterd/ph-eye-pii-en-small).

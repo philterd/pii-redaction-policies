@@ -5,9 +5,9 @@ category: "education"
 tags: ["FERPA", "education", "K-12", "higher-ed", "student records", "20 USC 1232g"]
 author: "Philterd"
 creator: "philterd"
-version: "1.0.0"
-updated: "2026-05-18"
-philterCompatibility: ">=3.0.0"
+version: "2.0.0"
+updated: "2026-10-26"
+philterCompatibility: ">=4.0.0"
 useCase: "Remove personally identifiable information from student educational records per FERPA (20 USC 1232g; 34 CFR Part 99)."
 entities: ["STUDENT", "DATE", "SSN", "PHONE", "EMAIL", "ADDRESS", "STUDENT_ID", "LUNCH_ID"]
 exampleInput: "Student Sarah Johnson (SID 887623, born 2008-09-15) earned a B+ in Algebra II during Spring 2025. Contact parent at jjohnson@example.com or (555) 867-5309."
@@ -41,7 +41,7 @@ It **preserves** the educational substance: grades, course names, term/semester 
 
 - **Directory information.** FERPA permits schools to disclose certain "directory information" (typically name, address, phone, dates of attendance, photographs, awards, participation in officially recognized activities) without consent &mdash; provided parents/students have been notified annually and given the opportunity to opt out. If you've collected directory-information opt-outs and want a less-aggressive variant for the opt-in records, remove the `personsName` and `address` entries (or build a parallel `ferpa-directory-allowed.json` policy).
 - **Student ID format.** The default regex matches `SID 887623`, `Student ID: 887623` with 6+ digits. Replace with your district's actual format (state IDs, federal IDs, or proprietary SIS identifiers).
-- **Confidence threshold.** `> 60` for names is moderate. School records have many proper nouns (school names, building names, district names, sports teams) that Philter can occasionally misclassify as personal names. Raise to `> 75` if you see false positives.
+- **Confidence threshold.** `> 0.60` for names is moderate. School records have many proper nouns (school names, building names, district names, sports teams) that Philter can occasionally misclassify as personal names. Raise to `> 0.75` if you see false positives.
 - **Parent/guardian names.** Not separately tagged &mdash; they get caught by `personsName` like any other name. If your use case treats parent contact info differently (e.g., emergency outreach preserved, marketing redacted), build a custom variant.
 - **Special-education and IEP records.** These often contain additional sensitive content (disability diagnoses, medical history, behavioral observations) that go beyond standard FERPA PII. Pair this policy with a healthcare/PHI policy when redacting IEP narratives.
 
@@ -59,3 +59,7 @@ It **preserves** the educational substance: grades, course names, term/semester 
 - [34 CFR Part 99 &mdash; FERPA implementing regulations](https://www.ecfr.gov/current/title-34/subtitle-A/part-99)
 - [U.S. Department of Education FERPA overview](https://studentprivacy.ed.gov/ferpa)
 - [Privacy Technical Assistance Center (PTAC) de-identification guidance](https://studentprivacy.ed.gov/resources/data-de-identification-overview-basic-terms)
+
+## Using this policy with Phileas
+
+The name filter names `ph-eye-pii-en-small`, the model bundled with Philter 4.0. With Phileas, set its `modelPath` to the directory of a downloaded copy of the model, [philterd/ph-eye-pii-en-small](https://huggingface.co/philterd/ph-eye-pii-en-small).

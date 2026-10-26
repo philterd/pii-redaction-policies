@@ -5,9 +5,9 @@ category: "healthcare"
 tags: ["HIPAA", "PHI", "clinical notes", "date shifting", "research"]
 author: "Philterd"
 creator: "philterd"
-version: "1.0.0"
-updated: "2026-05-18"
-philterCompatibility: ">=3.0.0"
+version: "2.0.0"
+updated: "2026-10-26"
+philterCompatibility: ">=4.0.0"
 useCase: "De-identify clinical notes for research, ML training, or analytics — preserving temporal relationships via per-patient date shifting."
 entities: ["NAME", "PROVIDER", "DATE", "AGE", "PHONE", "SSN", "EMAIL", "HOSPITAL", "MRN"]
 exampleInput: "Dr. Garcia saw Mr. Smith (MRN 47291) on 2025-03-14 for follow-up of his 2024-12-08 admission. Patient is 72 years old."
@@ -20,15 +20,15 @@ Tailored for **research and ML use cases** where you need patient privacy *and* 
 
 1. **Per-patient date shifting** instead of full date redaction. Each patient's dates are shifted by the same random offset (±90 days), preserving intervals between events while breaking linkage to the actual calendar dates.
 2. **Replacement tokens instead of full redaction** — `[PATIENT]`, `[PROVIDER]`, `[FACILITY]` — makes the text more readable for human reviewers and easier for downstream NLP.
-3. **Confidence-gated name detection** (`confidence > 60`) reduces over-redaction of common English words that Philter's NER occasionally misfires on in clinical text.
+3. **Confidence-gated name detection** (`confidence > 0.60`) reduces over-redaction of common English words that Philter's NER occasionally misfires on in clinical text.
 
-Ages under 90 are preserved (clinically relevant). Ages 90+ get the `[AGE>89]` token per HIPAA Safe Harbor §164.514(b)(2)(i)(C).
+Ages under 90 are preserved (clinically relevant). Ages 90+ get the `[AGE>89]` token per HIPAA Safe Harbor §164.514(b)(2)(i)(C). Ages 90 and over are matched when written as a number followed by "years", "yrs", or "y.o.", such as `93 years old` or `95-year-old`. A bare number, such as "she's 93", is not matched.
 
 ## When to customize
 
 - **Date shift window.** ±90 days works for most cohort studies. For oncology timelines or longitudinal studies that span years, widen the window to ±365 or more.
 - **Replacement tokens.** If your downstream pipeline expects specific tokens (e.g., spaCy's `PERSON` or HuggingFace's `[NAME]`), edit the `redactionFormat` fields.
-- **Confidence threshold.** `> 60` is conservative. For higher-recall (catch more names at the cost of more false positives), lower to `> 40`. For higher-precision research datasets where false positives are worse than false negatives, raise to `> 80`.
+- **Confidence threshold.** `> 0.60` is conservative. For higher-recall (catch more names at the cost of more false positives), lower to `> 0.40`. For higher-precision research datasets where false positives are worse than false negatives, raise to `> 0.80`.
 - **MRN regex.** Same caveat as the Safe Harbor policy — adjust for your EHR's format.
 
 ## When NOT to use this policy
@@ -46,3 +46,7 @@ For internal research use within the covered entity, this policy + an executed B
 
 - [HHS Guidance on Expert Determination](https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html#expert)
 - [Date Shifting Best Practices (NIST SP 800-188 draft)](https://csrc.nist.gov/publications/detail/sp/800-188/draft)
+
+## Using this policy with Phileas
+
+The name filter names `ph-eye-pii-en-small`, the model bundled with Philter 4.0. With Phileas, set its `modelPath` to the directory of a downloaded copy of the model, [philterd/ph-eye-pii-en-small](https://huggingface.co/philterd/ph-eye-pii-en-small).

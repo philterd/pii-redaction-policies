@@ -8,11 +8,17 @@
   "ignored": [],
   "identifiers": {
     "person": {
+      "phEyeConfiguration": {
+        "modelPath": "ph-eye-pii-en-small",
+        "labels": [
+          "name"
+        ]
+      },
       "phEyeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "[CUSTOMER]",
-          "condition": "confidence > 65"
+          "condition": "confidence > 0.65"
         }
       ]
     },

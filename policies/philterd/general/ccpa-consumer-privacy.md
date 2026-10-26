@@ -5,9 +5,9 @@ category: "general"
 tags: ["CCPA", "CPRA", "California", "consumer privacy", "personal information", "sensitive personal information", "privacy"]
 author: "Philterd"
 creator: "philterd"
-version: "1.0.0"
-updated: "2026-06-08"
-philterCompatibility: ">=3.0.0"
+version: "2.0.0"
+updated: "2026-10-26"
+philterCompatibility: ">=4.0.0"
 useCase: "Redact personal information and sensitive personal information as defined by the California Consumer Privacy Act (CCPA/CPRA) from consumer records."
 entities: ["NAME", "EMAIL", "PHONE", "ADDRESS", "SSN", "LICENSE", "PASSPORT", "DATE", "CREDIT_CARD", "IP", "MAC", "URL", "STATE_ID", "ACCOUNT"]
 exampleInput: "Consumer Maria Garcia (SSN 555-12-3456) of 88 Pine St, San Jose used account 4455667788. Email maria.g@example.com, phone (408) 555-0142, IP 203.0.113.7. CA driver license D1234567."
@@ -42,7 +42,7 @@ This policy targets:
 - **Household linkage.** CCPA covers "household" data. If your records can be re-linked to a household through combinations of non-redacted fields (e.g. address + device), evaluate those combinations &mdash; field-level redaction alone may not de-identify.
 - **Precise geolocation.** CPRA treats precise geolocation as SPI. This policy does not detect lat/long or GPS coordinates by default; add a custom identifier if your data contains them.
 - **State / consumer ID formats.** The default `state-id` pattern is keyword-anchored. Replace it with the exact California DL/ID format if you only process California records.
-- **Name confidence threshold.** Default redacts names above confidence 70. Adjust for precision vs recall.
+- **Name confidence threshold.** Default redacts names above confidence 0.70. Adjust for precision vs recall.
 - **De-identification standard.** To rely on the CCPA's de-identified-data exemption you must also commit to not re-identifying and implement safeguards (§ 1798.140(m)); redaction is a necessary but not sufficient step.
 
 ## CCPA/CPRA vs GDPR
@@ -72,3 +72,7 @@ If you operate in both regimes, the [GDPR policy](../general/gdpr-personal-data.
 - [California Attorney General &mdash; CCPA](https://oag.ca.gov/privacy/ccpa)
 - [California Privacy Protection Agency](https://cppa.ca.gov/)
 - [Cal. Civ. Code § 1798.140 (definitions)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.140)
+
+## Using this policy with Phileas
+
+The name filter names `ph-eye-pii-en-small`, the model bundled with Philter 4.0. With Phileas, set its `modelPath` to the directory of a downloaded copy of the model, [philterd/ph-eye-pii-en-small](https://huggingface.co/philterd/ph-eye-pii-en-small).

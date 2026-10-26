@@ -5,8 +5,8 @@ category: "healthcare"
 tags: ["HIPAA", "Safe Harbor", "PHI", "45 CFR 164.514", "de-identification"]
 author: "Philterd"
 creator: "philterd"
-version: "2.0.0"
-updated: "2026-10-19"
+version: "2.0.1"
+updated: "2026-10-26"
 philterCompatibility: ">=4.0.0"
 useCase: "A starting point for HIPAA Safe Harbor de-identification of clinical text per 45 CFR 164.514(b)(2)."
 entities: ["NAME", "AGE", "DATE", "PHONE", "EMAIL", "SSN", "MRN", "ACCOUNT", "URL", "IP", "MAC_ADDRESS", "VIN", "DRIVERS_LICENSE", "PASSPORT", "STREET_ADDRESS", "ZIP", "HOSPITAL", "CITY", "COUNTY"]
@@ -85,3 +85,7 @@ Set `endpoint` to where the model runs. Philter refuses a policy that names a Ph
 
 - [45 CFR § 164.514: Other requirements relating to uses and disclosures of protected health information](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-E/section-164.514)
 - [HHS Guidance Regarding Methods for De-identification of PHI](https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html)
+
+## Using this policy with Phileas
+
+The name filter names `ph-eye-pii-en-small`, the model bundled with Philter 4.0. With Phileas, set its `modelPath` to the directory of a downloaded copy of the model, [philterd/ph-eye-pii-en-small](https://huggingface.co/philterd/ph-eye-pii-en-small).

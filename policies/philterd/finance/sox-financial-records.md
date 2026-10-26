@@ -5,9 +5,9 @@ category: "finance"
 tags: ["SOX", "Sarbanes-Oxley", "financial reporting", "audit", "internal controls", "SEC", "15 USC 7201"]
 author: "Philterd"
 creator: "philterd"
-version: "1.0.0"
-updated: "2026-06-08"
-philterCompatibility: ">=3.0.0"
+version: "2.0.0"
+updated: "2026-10-26"
+philterCompatibility: ">=4.0.0"
 useCase: "Redact personal and account identifiers from financial records and audit workpapers under Sarbanes-Oxley while preserving the financial figures auditors need."
 entities: ["INDIVIDUAL", "SSN", "EMAIL", "PHONE", "CREDIT_CARD", "IBAN", "RTN", "DATE", "ACCOUNT", "GL_ACCOUNT", "EIN", "INVOICE"]
 exampleInput: "Approver Jane Doe (SSN 444-55-6666) signed off invoice INV-2024-3375 against GL account 41000 for $128,400.00 paid to vendor account 9988776655 on 2024-11-03."
@@ -66,3 +66,7 @@ It intentionally **does not** redact currency amounts or transaction dates &mdas
 - [Section 404 (15 USC § 7262)](https://www.law.cornell.edu/uscode/text/15/7262)
 - [SEC rule on retention of records relevant to audits (17 CFR 210.2-06)](https://www.ecfr.gov/current/title-17/chapter-II/part-210/section-210.2-06)
 - [Companion policies &mdash; GLBA NPPI](../finance/glba-nppi-redaction.md) and [PCI DSS scope reduction](../finance/pci-dss-scope-reduction.md)
+
+## Using this policy with Phileas
+
+The name filter names `ph-eye-pii-en-small`, the model bundled with Philter 4.0. With Phileas, set its `modelPath` to the directory of a downloaded copy of the model, [philterd/ph-eye-pii-en-small](https://huggingface.co/philterd/ph-eye-pii-en-small).

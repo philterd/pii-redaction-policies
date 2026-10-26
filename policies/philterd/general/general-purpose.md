@@ -5,9 +5,9 @@ category: "general"
 tags: ["starter", "general", "default"]
 author: "Philterd"
 creator: "philterd"
-version: "1.0.0"
-updated: "2026-05-18"
-philterCompatibility: ">=3.0.0"
+version: "2.0.0"
+updated: "2026-10-26"
+philterCompatibility: ">=4.0.0"
 useCase: "A balanced starting policy covering common PII types — names, contact info, government IDs, payment data — with no vertical-specific tuning."
 entities: ["NAME", "PHONE", "EMAIL", "SSN", "CREDIT_CARD", "IP", "URL", "IBAN", "PASSPORT", "DRIVERS_LICENSE"]
 exampleInput: "Contact Jane Doe at jane@example.com or 555-867-5309. Card 4111111111111111 on file. License #D1234567."
@@ -43,7 +43,7 @@ Does **not** cover:
 
 ## When to customize
 
-- **Name confidence.** Default `> 70` is moderately conservative. Lower to `> 50` for higher recall (catches more rare/foreign names at the cost of false positives on capitalized common words). Raise to `> 85` for higher precision.
+- **Name confidence.** Default `> 0.70` is moderately conservative. Lower to `> 0.50` for higher recall (catches more rare/foreign names at the cost of false positives on capitalized common words). Raise to `> 0.85` for higher precision.
 - **URL and IP redaction.** Some applications need to retain these for analytics. Remove the `url` or `ipAddress` entries if so.
 - **Add custom identifiers** for any deployment-specific patterns: internal customer IDs, ticket numbers, employee badges, etc.
 
@@ -55,3 +55,7 @@ Does **not** cover:
 4. Re-evaluate. Repeat until precision and recall meet your bar.
 
 [Philter Scope](https://philterd.ai/philter-scope/) automates step 3 — score policy changes against a gold-standard test set so you can measure regressions instead of guessing at them.
+
+## Using this policy with Phileas
+
+The name filter names `ph-eye-pii-en-small`, the model bundled with Philter 4.0. With Phileas, set its `modelPath` to the directory of a downloaded copy of the model, [philterd/ph-eye-pii-en-small](https://huggingface.co/philterd/ph-eye-pii-en-small).

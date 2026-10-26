@@ -8,11 +8,17 @@
   "ignored": [],
   "identifiers": {
     "person": {
+      "phEyeConfiguration": {
+        "modelPath": "ph-eye-pii-en-small",
+        "labels": [
+          "name"
+        ]
+      },
       "phEyeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "{{{REDACTED-%t}}}",
-          "condition": "confidence > 70"
+          "condition": "confidence > 0.70"
         }
       ]
     },
@@ -96,14 +102,6 @@
     },
     "driversLicense": {
       "driversLicenseFilterStrategies": [
-        {
-          "strategy": "REDACT",
-          "redactionFormat": "{{{REDACTED-%t}}}"
-        }
-      ]
-    },
-    "medicalCondition": {
-      "medicalConditionFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "{{{REDACTED-%t}}}"

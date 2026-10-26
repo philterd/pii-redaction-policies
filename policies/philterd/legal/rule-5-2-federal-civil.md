@@ -5,9 +5,9 @@ category: "legal"
 tags: ["FRCP 5.2", "federal civil", "court filings", "privacy", "PII"]
 author: "Philterd"
 creator: "philterd"
-version: "1.0.0"
-updated: "2026-05-22"
-philterCompatibility: ">=3.0.0"
+version: "2.0.0"
+updated: "2026-10-26"
+philterCompatibility: ">=4.0.0"
 useCase: "Redact federal civil filings per FRCP 5.2 — last 4 of SSN/TIN/account, year-only birthdates, minor names to initials."
 entities: ["SSN", "TIN", "ACCOUNT", "BIRTHDATE", "MINOR_NAME"]
 exampleInput: "Plaintiff Jane Doe (SSN 123-45-6789, born 1985-04-12) for account 1234567890. Minor child: Charles Doe."
@@ -70,3 +70,7 @@ Specialized federal proceedings have their own rules that supersede FRCP 5.2:
 - [FRBP 9037 — Privacy Protection For Filings Made with the Court (bankruptcy)](https://www.law.cornell.edu/rules/frbp/rule_9037)
 - [Federal Rule of Criminal Procedure 49.1 — Privacy Protection For Filings Made with the Court](https://www.law.cornell.edu/rules/frcrmp/rule_49.1)
 - [Judiciary Privacy Policy and Public Access to Electronic Case Files](https://www.uscourts.gov/rules-policies/judiciary-policies/privacy-policy-electronic-case-files)
+
+## Using this policy with Phileas
+
+The name filter names `ph-eye-pii-en-small`, the model bundled with Philter 4.0. With Phileas, set its `modelPath` to the directory of a downloaded copy of the model, [philterd/ph-eye-pii-en-small](https://huggingface.co/philterd/ph-eye-pii-en-small).

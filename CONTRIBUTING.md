@@ -75,6 +75,14 @@ This checks:
 
 CI runs the same checks on every PR.
 
+CI also loads every policy into `philterd/philter:4.0.0` and redacts a sample with it, and fails if Philter refuses a policy or cannot redact with it. To run the same check against your own Philter:
+
+```bash
+PHILTER_API_KEY=sk_... bash tests/load-in-philter.sh
+```
+
+Set `PHILTER_URL` if Philter is not at `https://localhost:8080`.
+
 ## Naming conventions
 
 - **Slugs**: kebab-case, descriptive. `hipaa-safe-harbor` not `hsh` or `hipaa_safe_harbor`.

@@ -5,9 +5,9 @@ category: "healthcare"
 tags: ["HIPAA", "PHI", "chatbot", "LLM", "conversational AI", "RAG"]
 author: "Philterd"
 creator: "philterd"
-version: "1.0.0"
-updated: "2026-05-18"
-philterCompatibility: ">=3.0.0"
+version: "2.0.0"
+updated: "2026-10-26"
+philterCompatibility: ">=4.0.0"
 useCase: "Redact PHI from user messages to a healthcare chatbot before they reach the LLM — preserves clinical meaning while removing identifiers."
 entities: ["PERSON", "AGE", "DATE", "PHONE", "EMAIL", "SSN", "ADDRESS", "ZIP", "IP", "FACILITY", "PROVIDER", "MRN", "INSURANCE_ID"]
 exampleInput: "Hi, I'm worried about my mom Linda Chen — she's 72, lives at 1234 Oak St in Austin TX 78701, and her MRN at Mercy Hospital is 47291. Her blood pressure was 165/95 this morning."
@@ -20,9 +20,9 @@ Designed for the **specific failure mode** of healthcare chatbots: users type co
 
 The policy preserves clinical meaning while stripping identifiers:
 
-- **Personal names** → `[PERSON]` tokens (confidence threshold lowered to `> 50` because chat messages are short and context-poor — names are harder to detect with high confidence)
+- **Personal names** → `[PERSON]` tokens (confidence threshold lowered to `> 0.50` because chat messages are short and context-poor — names are harder to detect with high confidence)
 - **Ages ≤ 89** → **preserved** (clinically relevant; "she's 72 with hypertension" is the actual question)
-- **Ages > 89** → `[AGE>89]` per HIPAA Safe Harbor §164.514(b)(2)(i)(C)
+- **Ages > 89** → `[AGE>89]` per HIPAA Safe Harbor §164.514(b)(2)(i)(C) Ages 90 and over are matched when written as a number followed by "years", "yrs", or "y.o.", such as `93 years old` or `95-year-old`. A bare number, such as "she's 93", is not matched.
 - **Dates** → fully redacted (even seemingly innocuous "last Tuesday" gets caught when written as a date)
 - **Addresses, ZIP codes** → redacted (ZIP truncated to 3 digits)
 - **Phone, email, IP, SSN** → fully redacted
@@ -55,7 +55,7 @@ Without these, the chatbot can't answer the user's actual question. The whole po
 
 ## When to customize
 
-- **Name confidence threshold.** Default `> 50` is loose, reflecting the short-context reality of chat messages. If your chatbot gets a lot of capitalized common words misclassified as names, raise to `> 65`. If you're missing names that humans would obviously spot, lower to `> 40`.
+- **Name confidence threshold.** Default `> 0.50` is loose, reflecting the short-context reality of chat messages. If your chatbot gets a lot of capitalized common words misclassified as names, raise to `> 0.65`. If you're missing names that humans would obviously spot, lower to `> 0.40`.
 - **Token vocabulary.** Default uses bracketed tokens (`[PERSON]`, `[FACILITY]`). If your downstream LLM is fine-tuned to expect specific tokens (`<patient>`, `<<NAME>>`), adjust the `redactionFormat` fields.
 - **Insurance-ID regex.** The default `\b(?:member|policy|insurance|plan)[\s-]?(?:id|number|#)[\s:#]*[A-Z0-9-]{6,}\b` is conservative. Update with your network's actual ID format if known.
 - **MRN regex.** Same caveat as other healthcare policies — adjust for your EHR's format.
@@ -83,3 +83,7 @@ See [Building a Privacy-Aware RAG System](https://philterd.ai/blog/building-a-pr
 - [Building a Privacy-Aware RAG System](https://philterd.ai/blog/building-a-privacy-aware-rag-system/)
 - [Philter AI Proxy &mdash; drop-in LLM PII guardrails](https://philterd.ai/philter-ai-proxy/)
 - [HHS Guidance on De-identification](https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html)
+
+## Using this policy with Phileas
+
+The name filter names `ph-eye-pii-en-small`, the model bundled with Philter 4.0. With Phileas, set its `modelPath` to the directory of a downloaded copy of the model, [philterd/ph-eye-pii-en-small](https://huggingface.co/philterd/ph-eye-pii-en-small).

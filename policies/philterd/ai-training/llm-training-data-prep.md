@@ -5,9 +5,9 @@ category: "ai-training"
 tags: ["AI", "LLM", "fine-tuning", "training data", "RAG", "ingestion"]
 author: "Philterd"
 creator: "philterd"
-version: "1.0.0"
-updated: "2026-05-18"
-philterCompatibility: ">=3.0.0"
+version: "2.0.0"
+updated: "2026-10-26"
+philterCompatibility: ">=4.0.0"
 useCase: "Aggressive PII redaction for documents being fed into LLM training, fine-tuning, or RAG vector stores — preserves semantic structure with type tokens."
 entities: ["PERSON", "PHONE", "EMAIL", "SSN", "CARD", "IP", "URL", "PASSPORT", "LICENSE", "IBAN", "ORG", "LOCATION", "ADDRESS"]
 exampleInput: "Patient John Smith was treated by Dr. Garcia at Mercy Hospital in Austin, TX. Contact: john@example.com or 555-867-5309."
@@ -18,7 +18,7 @@ exampleOutput: "Patient [PERSON] was treated by [PERSON] at [ORG] in [LOCATION],
 
 Tuned specifically for the AI training and RAG ingestion use case, which has different priorities than other redaction scenarios:
 
-1. **Bias toward over-redaction.** Once data enters model weights or a vector store, it's effectively unrecoverable. Catching a false positive (extra redacted token) is cheap; missing a true positive (PII baked into the model) is expensive. Name confidence threshold is `> 55` (looser than general-purpose) for higher recall.
+1. **Bias toward over-redaction.** Once data enters model weights or a vector store, it's effectively unrecoverable. Catching a false positive (extra redacted token) is cheap; missing a true positive (PII baked into the model) is expensive. Name confidence threshold is `> 0.55` (looser than general-purpose) for higher recall.
 
 2. **Semantic tokens, not asterisks.** Replaces PII with `[PERSON]`, `[ORG]`, `[LOCATION]`, etc. — preserves grammatical structure so the model still learns "patient X was treated by physician Y at facility Z" rather than just learning that asterisks appear randomly.
 
@@ -40,7 +40,7 @@ Tuned specifically for the AI training and RAG ingestion use case, which has dif
 ## When to customize
 
 - **Token vocabulary.** If your training framework expects specific tokens (e.g., spaCy's `PER` and `ORG`, BERT's `[PERSON]`), adjust `redactionFormat` accordingly. Consistency with downstream tokenizer matters.
-- **Confidence threshold.** `> 55` is loose. For very large training corpora where false positives are diluted, drop to `> 45` for maximum recall. For smaller datasets where each over-redaction hurts more, raise to `> 70`.
+- **Confidence threshold.** `> 0.55` is loose. For very large training corpora where false positives are diluted, drop to `> 0.45` for maximum recall. For smaller datasets where each over-redaction hurts more, raise to `> 0.70`.
 - **Domain-specific entities.** Add custom `identifiers` patterns for entities specific to your domain (drug names, ICD codes, legal citations, ticker symbols). Decide whether to redact or preserve based on whether they're identifying.
 
 ## Why this matters
@@ -54,3 +54,7 @@ A model trained on un-redacted PII memorizes it. Studies have demonstrated extra
 - [Carlini et al., "Extracting Training Data from Large Language Models" (USENIX Security 2021)](https://www.usenix.org/conference/usenixsecurity21/presentation/carlini-extracting)
 - [Building a Privacy-Aware RAG System](https://philterd.ai/blog/building-a-privacy-aware-rag-system/)
 - [Prompt Engineering for Privacy](https://philterd.ai/blog/prompt-engineering-for-privacy/)
+
+## Using this policy with Phileas
+
+The name filter names `ph-eye-pii-en-small`, the model bundled with Philter 4.0. With Phileas, set its `modelPath` to the directory of a downloaded copy of the model, [philterd/ph-eye-pii-en-small](https://huggingface.co/philterd/ph-eye-pii-en-small).

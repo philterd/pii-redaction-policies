@@ -59,3 +59,29 @@ jobs:
               sys.exit(1)
           print("All policies conform to the schema.")
           PY
+
+  philter:
+    # Loads every policy into a published Philter image and redacts a sample with it. The image is
+    # only pulled, never built or pushed.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start Philter 4.0.0
+        run: |
+          key="sk_$(openssl rand -hex 16)"
+          echo "::add-mask::$key"
+          echo "PHILTER_API_KEY=$key" >> "$GITHUB_ENV"
+          docker run -d --name philter -p 8080:8080 \
+            -e PHILTER_ENCRYPTION_KEY="$(openssl rand -base64 32)" \
+            -e PHILTER_BOOTSTRAP_API_KEY="$key" \
+            philterd/philter:4.0.0
+          for i in $(seq 1 60); do
+            curl -skf https://localhost:8080/api/health > /dev/null && exit 0
+            sleep 2
+          done
+          docker logs philter
+          exit 1
+
+      - name: Load each policy into Philter
+        run: bash tests/load-in-philter.sh
