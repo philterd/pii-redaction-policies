@@ -24,6 +24,10 @@ Slugs are kebab-case, **globally unique across both `philterd/` and `community/`
 
 **Why `community/` and not `philterd/`?** The `policies/philterd/` directory is reserved for policies maintained by the core Philterd team — we commit to keeping those current with Philter releases and regulatory changes. Community policies are owned by their contributors; both are valuable but they carry different maintenance expectations.
 
+For a copyable policy JSON, sidecar, and synthetic example input/output pair,
+start with the [community policy template](COMMUNITY_POLICY_TEMPLATE.md).
+Replace its fictional examples and all metadata before submitting.
+
 ## Sidecar `.md` schema
 
 Every policy `.json` must have a sibling `.md` with this frontmatter:
