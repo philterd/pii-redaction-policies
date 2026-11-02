@@ -102,3 +102,7 @@ Bump the version and update the `updated:` date on every change.
 ## Compliance disclaimer
 
 Policies in this repo are starting points, not legal advice or compliance certification. If you're submitting a policy that targets a specific regulatory framework (HIPAA, GDPR, PCI DSS, etc.), include citations and be explicit in the markdown about what the policy does and doesn't cover. Reviewers may ask for tightening of compliance claims.
+
+## Licensing and sign-off
+
+This project is licensed under [Apache 2.0](LICENSE), and contributions are accepted under the same license. Sign off every commit with `git commit -s` to certify the [Developer Certificate of Origin](https://developercertificate.org/); a required check enforces it. See the [Philterd contributing guide](https://github.com/philterd/.github/blob/main/CONTRIBUTING.md#licensing-and-sign-off) for how to sign off commits you have already made.
