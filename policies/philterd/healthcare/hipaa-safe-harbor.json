@@ -99,7 +99,7 @@
     },
     "zipCode": {
       "priority": 10,
-      "zipCodeFilterStrategy": [
+      "zipCodeFilterStrategies": [
         {
           "strategy": "REDACT",
           "redactionFormat": "{{{REDACTED-%t}}}",

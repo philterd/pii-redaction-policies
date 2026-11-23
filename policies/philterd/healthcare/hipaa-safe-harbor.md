@@ -5,8 +5,8 @@ category: "healthcare"
 tags: ["HIPAA", "Safe Harbor", "PHI", "45 CFR 164.514", "de-identification"]
 author: "Philterd"
 creator: "philterd"
-version: "2.0.1"
-updated: "2026-10-26"
+version: "2.0.2"
+updated: "2026-11-23"
 philterCompatibility: ">=4.0.0"
 useCase: "A starting point for HIPAA Safe Harbor de-identification of clinical text per 45 CFR 164.514(b)(2)."
 entities: ["NAME", "AGE", "DATE", "PHONE", "EMAIL", "SSN", "MRN", "ACCOUNT", "URL", "IP", "MAC_ADDRESS", "VIN", "DRIVERS_LICENSE", "PASSPORT", "STREET_ADDRESS", "ZIP", "HOSPITAL", "CITY", "COUNTY"]
