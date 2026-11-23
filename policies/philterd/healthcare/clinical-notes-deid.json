@@ -22,14 +22,6 @@
         }
       ]
     },
-    "physicianName": {
-      "physicianNameFilterStrategies": [
-        {
-          "strategy": "REDACT",
-          "redactionFormat": "[PROVIDER]"
-        }
-      ]
-    },
     "date": {
       "onlyValidDates": true,
       "dateFilterStrategies": [

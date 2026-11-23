@@ -5,8 +5,8 @@ category: "healthcare"
 tags: ["HIPAA", "PHI", "clinical notes", "date shifting", "research"]
 author: "Philterd"
 creator: "philterd"
-version: "2.0.0"
-updated: "2026-10-26"
+version: "2.0.1"
+updated: "2026-11-23"
 philterCompatibility: ">=4.0.0"
 useCase: "De-identify clinical notes for research, ML training, or analytics — preserving temporal relationships via per-patient date shifting."
 entities: ["NAME", "PROVIDER", "DATE", "AGE", "PHONE", "SSN", "EMAIL", "HOSPITAL", "MRN"]

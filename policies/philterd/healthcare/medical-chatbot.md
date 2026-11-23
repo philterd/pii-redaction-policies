@@ -5,7 +5,7 @@ category: "healthcare"
 tags: ["HIPAA", "PHI", "chatbot", "LLM", "conversational AI", "RAG"]
 author: "Philterd"
 creator: "philterd"
-version: "2.0.1"
+version: "2.0.2"
 updated: "2026-11-23"
 philterCompatibility: ">=4.0.0"
 useCase: "Redact PHI from user messages to a healthcare chatbot before they reach the LLM — preserves clinical meaning while removing identifiers."

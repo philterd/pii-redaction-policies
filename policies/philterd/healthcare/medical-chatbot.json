@@ -87,14 +87,6 @@
         }
       ]
     },
-    "physicianName": {
-      "physicianNameFilterStrategies": [
-        {
-          "strategy": "REDACT",
-          "redactionFormat": "[PROVIDER]"
-        }
-      ]
-    },
     "identifiers": [
       {
         "classification": "mrn",

@@ -95,14 +95,6 @@
         }
       ]
     },
-    "physicianName": {
-      "physicianNameFilterStrategies": [
-        {
-          "strategy": "REDACT",
-          "redactionFormat": "[PERSON]"
-        }
-      ]
-    },
     "hospital": {
       "hospitalFilterStrategies": [
         {

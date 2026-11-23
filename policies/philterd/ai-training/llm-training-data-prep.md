@@ -5,8 +5,8 @@ category: "ai-training"
 tags: ["AI", "LLM", "fine-tuning", "training data", "RAG", "ingestion"]
 author: "Philterd"
 creator: "philterd"
-version: "2.0.0"
-updated: "2026-10-26"
+version: "2.0.1"
+updated: "2026-11-23"
 philterCompatibility: ">=4.0.0"
 useCase: "Aggressive PII redaction for documents being fed into LLM training, fine-tuning, or RAG vector stores — preserves semantic structure with type tokens."
 entities: ["PERSON", "PHONE", "EMAIL", "SSN", "CARD", "IP", "URL", "PASSPORT", "LICENSE", "IBAN", "ORG", "LOCATION", "ADDRESS"]
@@ -22,7 +22,7 @@ Tuned specifically for the AI training and RAG ingestion use case, which has dif
 
 2. **Semantic tokens, not asterisks.** Replaces PII with `[PERSON]`, `[ORG]`, `[LOCATION]`, etc. — preserves grammatical structure so the model still learns "patient X was treated by physician Y at facility Z" rather than just learning that asterisks appear randomly.
 
-3. **Aggregates similar types.** `physicianName` and `personsName` both map to `[PERSON]`. `hospital` maps to `[ORG]`. Reduces vocabulary fragmentation in the trained model.
+3. **Aggregates similar types.** `personsName` maps to `[PERSON]`, physicians included. `hospital` maps to `[ORG]`. Reduces vocabulary fragmentation in the trained model.
 
 ## When to use this
 
